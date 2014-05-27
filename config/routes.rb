@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :app do
+    root 'queries#index'
+    get  'queries/index', to: 'queries#index', as: :queries_index
+    post 'queries/process', to: 'queries#process', as: :queries_process
   end
 
   namespace :admin do
