@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :app do
     root 'queries#index'
     get  'queries/index', to: 'queries#index', as: :queries_index
-    post 'queries/process', to: 'queries#process', as: :queries_process
+    post 'queries/execute', to: 'queries#execute', as: :queries_execute
   end
 
   namespace :admin do
