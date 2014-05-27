@@ -1,0 +1,2 @@
+module App::QueriesHelper
+end
