@@ -31,6 +31,9 @@ group :development, :test do
   gem 'debugger'
 end
 
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 gem 'haml-rails'
 
 # Use ActiveModel has_secure_password
