@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'home#index'
+
   namespace :app do
     root 'queries#index'
     get  'queries/index', to: 'queries#index', as: :queries_index

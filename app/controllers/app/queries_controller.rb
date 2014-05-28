@@ -1,4 +1,4 @@
-class App::QueriesController < ApplicationController
+class App::QueriesController < App::BaseController
 
 	def index
 	end

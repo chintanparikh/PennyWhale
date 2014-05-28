@@ -1,0 +1,7 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag    'app/base', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'app/base', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<% end %>
+
+<%= render template: "layouts/application" %>
