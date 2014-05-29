@@ -14,7 +14,8 @@ class App::QueriesController < App::BaseController
 	end
 
 	def autocomplete
-		@suggestions = Phrase.select([:phrase]).where("phrase LIKE ?", "%#{params[:query]}%").order("LENGTH(phrase) ASC").map{|p| p.phrase}
+		like= (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
+		@suggestions = Phrase.select([:phrase]).where("phrase #{like} ?", "%#{params[:query]}%").order("LENGTH(phrase) ASC").map{|p| p.phrase}
 		@resp = {suggestions: @suggestions}
 		respond_to do |format|
 			format.json {render json: @resp}
