@@ -1,0 +1,62 @@
+body {
+	background-image: url(/assets/query-background.png);
+	background-repeat: no-repeat;
+	background-position: 10% 0;
+}
+
+.container.vertical-center {
+	position:fixed;
+	top:50%;
+	left:50%;
+	margin-top:-70px;
+	margin-left:-570px
+}
+
+.form-control.input-lg {
+	border-radius:0px; 
+	box-shadow: inset 0 3px 0 #BEBEBE; 
+	border: 1px solid #CECECE; 
+	border-top: 1px solid #BEBEBE; 
+	font-size: 15px;
+	height: 46px;
+}
+
+.btn-info.btn-lg.btn-submit {
+	display:block;
+	width:100%;
+}
+
+.autocomplete-suggestions {
+	color: #555555;
+	background-color: #eeeeee;
+	border-color: #e2e2e2;
+	overflow: scroll;
+	width: 10px;
+}
+
+.autocomplete-suggestion {
+	padding: 5px 10px;
+
+}
+
+.autocomplete-selected {
+	background-color: #75caeb;
+	color: #ffffff;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
