@@ -148,7 +148,7 @@ intent = Intent.create(name: 'Holdings Value', code:"pull_from_yahoo('v1')")
 match_phrases_to_intent(['holdings value'], intent)
 
 # Low Limit
-intent = Intent.create(name: '', code:"pull_from_yahoo('l3')")
+intent = Intent.create(name: 'Low Limit', code:"pull_from_yahoo('l3')")
 match_phrases_to_intent(['low limit'], intent)
 
 # Market Capitalization
@@ -157,19 +157,19 @@ Intent.create(name: '', code: '')
 match_phrases_to_intent(['market cap', 'market Capitalization'], intent)
 
 # Name
-intent = Intent.create(name: '', code:"pull_from_yahoo('n0')")
+intent = Intent.create(name: 'Name', code:"pull_from_yahoo('n0')")
 match_phrases_to_intent(['name'], intent)
 
 # One Year Target Price
-intent = Intent.create(name: '', code:"pull_from_yahoo('t8')")
+intent = Intent.create(name: 'One Year Target Price', code:"pull_from_yahoo('t8')")
 match_phrases_to_intent(['One year target price', 'target price for one year', 'target price'], intent)
 
 # Open
-intent = Intent.create(name: '', code:"pull_from_yahoo('a0')")
+intent = Intent.create(name: 'Open', code:"pull_from_yahoo('a0')")
 match_phrases_to_intent(['open'], intent)
 
 # PEG Ratio
-intent = Intent.create(name: '', code:"pull_from_yahoo('r5')")
+intent = Intent.create(name: 'PEG Ratio', code:"pull_from_yahoo('r5')")
 match_phrases_to_intent(['PEG', 'peg ratio', 'p/eg ratio', 'p/eg', 'price to earnings growth', 'price to earnings growth ratio'], intent)
 
 # PE Ratio
@@ -178,55 +178,55 @@ Intent.create(name: '', code: '')
 match_phrases_to_intent(['PE', 'p/e', 'PE Ratio', 'P/E ratio', 'price to earnings ratio', 'price to earnings'], intent)
 
 # Previous Close
-intent = Intent.create(name: '', code:"pull_from_yahoo('p0')")
+intent = Intent.create(name: 'Previous Close', code:"pull_from_yahoo('p0')")
 match_phrases_to_intent(['previous close'], intent)
 
 # Price book
-intent = Intent.create(name: '', code:"pull_from_yahoo('p6')")
+intent = Intent.create(name: 'Price Book', code:"pull_from_yahoo('p6')")
 match_phrases_to_intent(['price book'], intent)
 
 # Price over EPS estimate for current year
-intent = Intent.create(name: '', code:"pull_from_yahoo('r6')")
+intent = Intent.create(name: 'Price/EPS estimate for current year', code:"pull_from_yahoo('r6')")
 match_phrases_to_intent(['price over eps estimate for current year'], intent)
 
 # Price over EPS estimate for next year
-intent = Intent.create(name: '', code:"pull_from_yahoo('r7')")
+intent = Intent.create(name: 'Price/EPS estimate for next year', code:"pull_from_yahoo('r7')")
 match_phrases_to_intent(['price over eps estimate for next year'], intent)
 
 # Revenue
-intent = Intent.create(name: '', code:"pull_from_yahoo('s6')")
+intent = Intent.create(name: 'Revenue', code:"pull_from_yahoo('s6')")
 match_phrases_to_intent(['revenue'], intent)
 
 # Shares Owned
-intent = Intent.create(name: '', code:"pull_from_yahoo('s1')")
+intent = Intent.create(name: 'Shares Owned', code:"pull_from_yahoo('s1')")
 match_phrases_to_intent(['shares owned', 'shares retention'], intent)
 
 # Shares Outstanding
-intent = Intent.create(name: '', code:"pull_from_yahoo('j2')")
+intent = Intent.create(name: 'Shares Outstanding', code:"pull_from_yahoo('j2')")
 match_phrases_to_intent(['shares outstanding'], intent)
 
 # Short Ratio
-intent = Intent.create(name: '', code:"pull_from_yahoo('s7')")
+intent = Intent.create(name: 'Short Ratio', code:"pull_from_yahoo('s7')")
 match_phrases_to_intent(['short ratio'], intent)
 
-# 200 day moving average
-intent = Intent.create(name: '', code:"pull_from_yahoo('m4')")
+# 200 Day Moving Average
+intent = Intent.create(name: '200 Day Moving Average', code:"pull_from_yahoo('m4')")
 match_phrases_to_intent(['two hundred day moving average', '200 day moving average', '200 day average', 'two hundred day average', '200 day price average'], intent)
 
 # Volume
-intent = Intent.create(name: '', code:"pull_from_yahoo('v0')")
+intent = Intent.create(name: 'Volume', code:"pull_from_yahoo('v0')")
 match_phrases_to_intent(['volume'], intent)
 
 # Year High
-intent = Intent.create(name: '', code:"pull_from_yahoo('k0')")
+intent = Intent.create(name: 'Year High', code:"pull_from_yahoo('k0')")
 match_phrases_to_intent(['year high', '52 week high'], intent)
 
 # Year Low
-intent = Intent.create(name: '', code:"pull_from_yahoo('j0')")
+intent = Intent.create(name: 'Year Low', code:"pull_from_yahoo('j0')")
 match_phrases_to_intent(['year low', '52 week low'], intent)
 
 # Year range
-intent = Intent.create(name: '', code:"pull_from_yahoo('w0')")
+intent = Intent.create(name: 'Year range', code:"pull_from_yahoo('w0')")
 match_phrases_to_intent(['year range', 'years range'], intent)
 
 # Enterprise Value
