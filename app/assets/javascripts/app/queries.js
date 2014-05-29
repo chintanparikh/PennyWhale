@@ -6,4 +6,9 @@ $(document).ready(function()
 
     	$("#query-fields").append(new_fields);
 	});
+
+	$("#query").autocomplete({
+		serviceUrl: 'app/queries/autocomplete.json',
+		triggerSelectOnValidInput: false
+	});
 });

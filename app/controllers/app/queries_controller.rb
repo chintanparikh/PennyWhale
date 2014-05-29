@@ -13,4 +13,12 @@ class App::QueriesController < App::BaseController
 		@output = eval(intent.code, binding)
 	end
 
+	def autocomplete
+		@suggestions = Phrase.select([:phrase]).where("phrase LIKE ?", "%#{params[:query]}%").order("LENGTH(phrase) ASC").map{|p| p.phrase}
+		@resp = {suggestions: @suggestions}
+		respond_to do |format|
+			format.json {render json: @resp}
+		end
+	end
+
 end

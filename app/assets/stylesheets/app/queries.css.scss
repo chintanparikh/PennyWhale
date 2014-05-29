@@ -29,3 +29,21 @@ body {
 	display:block;
 	width:100%;
 }
+
+.autocomplete-suggestions {
+	color: #555555;
+	background-color: #eeeeee;
+	border-color: #e2e2e2;
+	overflow: scroll;
+	width: 10px;
+}
+
+.autocomplete-suggestion {
+	padding: 5px 10px;
+
+}
+
+.autocomplete-selected {
+	background-color: #75caeb;
+	color: #ffffff;
+}
