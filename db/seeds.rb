@@ -314,6 +314,15 @@ match_phrases_to_intent(['last split factor', 'last split'], intent)
 # Last Split Date
 match_phrases_to_intent(['last split date'], intent)
 
+# Both Holdings
+match_phrases_to_intent(['holdings', '13f holdings', 'insider and institutional holdings', '13f', '13f forms'], intent)
+
+# Insider holdings
+match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
+
+# Institutional Holdings
+match_phrases_to_intent(['institutional holdings', '13f institutional holdings', '13f institutional'], intent)
+
 
 
 
