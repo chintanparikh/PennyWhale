@@ -316,7 +316,7 @@ match_phrases_to_intent(['net income available to common'], intent)
 
 # Quarterly earnings growth
 # TODO
-Intent.create(name: '', code: '')
+Intent.create(name: 'Quarterly earnings growth', code: '')
 match_phrases_to_intent(['quarterly earnings growth', 'earnings growth for last quarter', 'earnings growth over last quarter'], intent)
 
 # Total cash
