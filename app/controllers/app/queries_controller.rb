@@ -12,7 +12,9 @@ class App::QueriesController < App::BaseController
 		
 		@output = stocks.map do |stock|
 			{ticker: stock.ticker, data: @intent.get_data(stock.get_binding)}
-		end	
+		end
+
+		@news = Stock.get_news params[:tickers].split
 	end
 
 	def autocomplete
