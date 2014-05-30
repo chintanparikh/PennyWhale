@@ -1,11 +1,4 @@
-.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      = link_to "PennyWhale", "#"
-      %button.navbar-toggle{"data-target" => "#navbar-main", "data-toggle" => "collapse", type: "button"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+= render 'navbar'
 .container.vertical-center
   = form_tag app_queries_execute_path, method: :get, id: 'query_form' do
     #query-fields
