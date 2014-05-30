@@ -1,12 +1,11 @@
 #main-query-info
   %ul
-    %li 
-      PE Ratio for 
-      %strong AAPL 
-      is 
-      %strong 5.63
-    %li 
-      PE Ratio for 
-      %strong AAPL 
-      is 
-      %strong 5.63
+    - @output.each do |out|
+      %li 
+        = @intent.name 
+        for 
+        %strong
+          = out.ticker 
+        is 
+        %strong 
+          = out.output
