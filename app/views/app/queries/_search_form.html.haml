@@ -1,0 +1,15 @@
+= form_tag app_queries_execute_path, method: :get, id: 'query_form' do
+  #query-fields
+    .row
+      .col-lg-2
+      .col-lg-8
+        .row
+          .col-md-3
+            .form-group
+              = text_field_tag "tickers", nil, placeholder: "TCKR", class: 'form-control input-lg'
+          .col-md-7
+            .form-group
+              = text_field_tag "query", nil, placeholder: "Property", class: 'form-control input-lg'
+          .col-md-2
+            = button_tag "Compute", class: "btn btn-primary btn-lg", id: "query-compute-button"
+      .col-lg-2

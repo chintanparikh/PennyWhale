@@ -20,4 +20,8 @@ class Stock
 		data = CSV.parse(open(endpoint))
 		data[0][0]
 	end
+
+	def ticker
+		@ticker
+	end
 end

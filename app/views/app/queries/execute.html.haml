@@ -1,1 +1,14 @@
-= @output
+= render 'navbar'
+.container.fill#execute-container
+  = render 'search_form'
+  .col-lg-2
+  .col-lg-8.fill.panel.panel-default#query-answer-panel
+    .panel-body
+      = render 'app/queries/components/main'
+      %hr
+      = render 'app/queries/components/graph'
+      %hr
+      = render 'app/queries/components/news'
+      %hr
+      = render 'app/queries/components/related'
+  .col-lg-2

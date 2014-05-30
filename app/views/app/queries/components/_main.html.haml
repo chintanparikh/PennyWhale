@@ -1,0 +1,11 @@
+#main-query-info
+  %ul
+    - @output.each do |out|
+      %li 
+        = @intent.name 
+        for 
+        %strong
+          = out[:ticker]
+        is 
+        %strong 
+          = out[:output]
