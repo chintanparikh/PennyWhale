@@ -11,7 +11,8 @@ class App::QueriesController < App::BaseController
 		stocks = params[:tickers].split.map{|stock| Stock.find(stock)}
 		
 		@output = stocks.map do |stock|
-			{ticker: stock.ticker, output: @intent.execute(stock.get_binding)}
+			# {ticker: stock.ticker, data: @intent.get_data(stock.get_binding)}
+			{ticker: stock.ticker, data: 5}
 		end	
 	end
 
