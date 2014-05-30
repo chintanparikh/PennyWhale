@@ -8,7 +8,7 @@ $(document).ready(function()
 	});
 
 	$("#query").autocomplete({
-		serviceUrl: 'app/queries/autocomplete.json',
+		serviceUrl: 'queries/autocomplete.json',
 		triggerSelectOnValidInput: false
 	});
 });

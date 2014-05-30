@@ -11,7 +11,8 @@ class App::QueriesController < App::BaseController
 		phrase = Phrase.find_by_phrase(params[:query])
 		# Check if phrase isn't found
 		intent = phrase.intent
-		@output = intent.execute stock.get_binding
+		# @output = intent.execute stock.get_binding
+		@output = 5
 	end
 
 	def autocomplete
