@@ -1,11 +1,8 @@
 #query-main
-  %h2 Headlines for AAPL, GOOG
+  %h2 
+    Headlines for 
+    = @output.map{|o| o[:ticker]}.join(', ')
   %ul
-    %li
-      = link_to "Some Headline Here", "http://google.com"
-    %li
-      = link_to "Some Headline Here", "http://google.com"
-    %li
-      = link_to "Some Headline Here", "http://google.com"
-    %li
-      = link_to "Some Headline Here", "http://google.com"
+    - @news.each do |article|
+      %li
+        = link_to article[:title], article[:link]

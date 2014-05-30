@@ -42,10 +42,10 @@ module App::GraphsHelper
 
 		  graph += "],
 							 'gridLineColor': '#E9E9EA ',
-							 'fontColor': '#83888D ',
+							 'fontColor': '#158cba ',
 							 'underLineColor': '#F0F0F0 ',
 							 'timeAxisBackgroundColor': '#E9EDF2 ',
-							 'trendLineColor': '#FF7965 ',
+							 'trendLineColor': '#158cba ',
 							 'width': '100%',
 							 'height': 350
 							});
