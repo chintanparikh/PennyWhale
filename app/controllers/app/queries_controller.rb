@@ -7,14 +7,16 @@ class App::QueriesController < App::BaseController
 	# params[:query]
 	def execute
 		stock = Stock.find(params[:ticker])
+		# Check if stock isn't valid
 		phrase = Phrase.find_by_phrase(params[:query])
+		# Check if phrase isn't found
 		intent = phrase.intent
-		binding = stock.get_binding
-		@output = eval(intent.code, binding)
+		@output = intent.execute stock.get_binding
 	end
 
 	def autocomplete
-		like= (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
+		# LIKE is case insensitive in sqlite (testing, develop), but not in postgres (staging, production), so we need ILIKE for those cases
+		like = (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
 		@suggestions = Phrase.select([:phrase]).where("phrase #{like} ?", "%#{params[:query]}%").order("LENGTH(phrase) ASC").map{|p| p.phrase}
 		@resp = {suggestions: @suggestions}
 		respond_to do |format|
