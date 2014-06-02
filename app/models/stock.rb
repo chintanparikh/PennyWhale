@@ -55,7 +55,6 @@ class Stock
 	end
 
 	def realtime_pull_from_yahoo realtime_tag, nonrealtime_tag
-		debugger
 		if markets_open?
 			ret = pull_from_yahoo(realtime_tag)	
 		else

@@ -82,11 +82,11 @@ intent = Intent.create(name: 'Days Low', code:"pull_from_yahoo('g0')")
 match_phrases_to_intent(["Day's low", "days low", "price low", "lowest price in the last day", 'lowest price in day', 'todays low'], intent)
 
 # Days Range + realtime
-intent = Intent.create(name: 'Days Range', code: 'realtime_pull_from_yahoo("m2", "m0")')
+intent = Intent.create(name: 'Days Range', code: 'pull_from_yahoo("m0")')
 match_phrases_to_intent(["day's range", 'days range', 'range', 'todays range'], intent)
 
 # Days Value Change + realtime
-intent = Intent.create(name: 'Days Value Change', code: 'realtime_pull_from_yahoo("w4", "w1")')
+intent = Intent.create(name: 'Days Value Change', code: 'pull_from_yahoo("w1")')
 match_phrases_to_intent(["day's value change", "days value change", 'value cahnge today', 'todays value change'], intent)
 
 # Dividend pay date
@@ -148,7 +148,7 @@ intent = Intent.create(name: 'Low Limit', code:"pull_from_yahoo('l3')")
 match_phrases_to_intent(['low limit'], intent)
 
 # Market Capitalization
-intent = Intent.create(name: 'Market Capitalization', code: 'realtime_pull_from_yahoo("j3", "j1")')
+intent = Intent.create(name: 'Market Capitalization', code: 'pull_from_yahoo("j1")')
 match_phrases_to_intent(['market cap', 'market Capitalization'], intent)
 
 # Name
@@ -168,7 +168,7 @@ intent = Intent.create(name: 'PEG Ratio', code:"pull_from_yahoo('r5')")
 match_phrases_to_intent(['PEG', 'peg ratio', 'p/eg ratio', 'p/eg', 'price to earnings growth', 'price to earnings growth ratio'], intent)
 
 # PE Ratio
-intent = Intent.create(name: 'PE Ratio', code: 'realtime_pull_from_yahoo("r2", "r0")')
+intent = Intent.create(name: 'PE Ratio', code: 'pull_from_yahoo(r0")')
 match_phrases_to_intent(['PE', 'p/e', 'PE Ratio', 'P/E ratio', 'price to earnings ratio', 'price to earnings'], intent)
 
 # Previous Close
