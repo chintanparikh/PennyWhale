@@ -40,4 +40,13 @@ class Stock
 
 		news
 	end
+
+	def realtime_pull_from_yahoo realtime_tag, nonrealtime_tag
+		if markets_open?
+			ret = pull_from_yahoo(realtime_tag)	
+		else
+			ret = pull_from_yahoo(nonrealtime_tag)
+		end
+		ret
+	end
 end
