@@ -23,6 +23,12 @@ class Stock
 		data[0][0]
 	end
 
+	def percent_change_yahoo tag_value, tag_percent
+		endpoint = "http://download.finance.yahoo.com/d/quotes.csv?s=#{@ticker}&f=#{tag_value}, #{tag_percent}"
+		data = CSV.parse(open(endpoint))
+		data[0][0]+"(#{data[0][2]})"
+	end
+
 	def ticker
 		@ticker
 	end
@@ -37,7 +43,6 @@ class Stock
 		feed.items.each do |item|
 			news.push({title: item.title, link: item.link})
 	  end
-
 		news
 	end
 end
