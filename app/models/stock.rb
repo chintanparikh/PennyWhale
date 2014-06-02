@@ -23,6 +23,12 @@ class Stock
 		data[0][0]
 	end
 
+	def percent_change_yahoo tag_value, tag_percent
+		endpoint = "http://download.finance.yahoo.com/d/quotes.csv?s=#{@ticker}&f=#{tag_value}, #{tag_percent}"
+		data = CSV.parse(open(endpoint))
+		data[0][0]+"(#{data[0][2]})"
+	end
+
 	def ticker
 		@ticker
 	end
@@ -37,7 +43,35 @@ class Stock
 		feed.items.each do |item|
 			news.push({title: item.title, link: item.link})
 	  end
-
 		news
+	end
+
+	def markets_open?
+		now = Time.now
+		open = Time.new(now.year, now.month, now.day, 9, 30, 0)
+		close  = Time.new(now.year, now.month, now.day, 16, 0, 0)
+
+		return now.between?(open, close)
+	end
+
+	def realtime_pull_from_yahoo realtime_tag, nonrealtime_tag
+		if markets_open?
+			ret = pull_from_yahoo(realtime_tag)	
+		else
+			ret = pull_from_yahoo(nonrealtime_tag)
+		end
+		ret
+	end
+
+	def whalewisdom_stock_id
+		url = "http://whalewisdom.com/stock/#{@ticker}"
+		text = open(url).read
+		/^\s+whalewisdom.Stock.stock_id=([0-9]+)/.match(text)[1]
+	end
+
+	def whalewisdom_quarter_id
+		url = "http://whalewisdom.com/stock/#{@ticker}"
+		text = open(url).read
+		/^\s+whalewisdom.Stock.current_quarter_id=([0-9]+)/.match(text)[1]
 	end
 end
