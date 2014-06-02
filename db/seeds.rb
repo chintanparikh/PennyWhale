@@ -450,7 +450,7 @@ match_phrases_to_intent(['last split date'], intent)
 
 # Both Holdings
 # TODO
-Intent.create(name: '', code: '')
+Intent.create(name: 'Insider and Institutional Holdings', code: '')
 match_phrases_to_intent(['holdings', '13f holdings', 'insider and institutional holdings', '13f', '13f forms'], intent)
 
 # Insider holdings

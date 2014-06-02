@@ -62,4 +62,16 @@ class Stock
 		end
 		ret
 	end
+
+	def whalewisdom_stock_id
+		url = "http://whalewisdom.com/stock/#{@ticker}"
+		text = open(url).read
+		/^\s+whalewisdom.Stock.stock_id=([0-9]+)/.match(text)[1]
+	end
+
+	def whalewisdom_quarter_id
+		url = "http://whalewisdom.com/stock/#{@ticker}"
+		text = open(url).read
+		/^\s+whalewisdom.Stock.current_quarter_id=([0-9]+)/.match(text)[1]
+	end
 end
