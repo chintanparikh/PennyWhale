@@ -168,7 +168,7 @@ intent = Intent.create(name: 'PEG Ratio', code:"pull_from_yahoo('r5')")
 match_phrases_to_intent(['PEG', 'peg ratio', 'p/eg ratio', 'p/eg', 'price to earnings growth', 'price to earnings growth ratio'], intent)
 
 # PE Ratio
-intent = Intent.create(name: 'PE Ratio', code: 'pull_from_yahoo(r0")')
+intent = Intent.create(name: 'PE Ratio', code: 'pull_from_yahoo("r0")')
 match_phrases_to_intent(['PE', 'p/e', 'PE Ratio', 'P/E ratio', 'price to earnings ratio', 'price to earnings'], intent)
 
 # Previous Close
