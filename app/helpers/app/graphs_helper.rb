@@ -7,25 +7,25 @@ module App::GraphsHelper
 		when "PE Ratio"
 			graphs = []
 			tickers.each do |ticker|
-				graphs.push({graph: "<img src='http://www.nasdaq.com//charts/#{ticker}_per.jpeg' />", ticker: ticker})
+				graphs.push({content: "<img src='http://www.nasdaq.com//charts/#{ticker}_per.jpeg' />", ticker: ticker, id: 'graph'})
 			end
 			graph = make_tabs graphs
 		when "PEG Ratio"
 			graphs = []
 			tickers.each do |ticker|
-				graphs.push({graph: "<img src='http://www.nasdaq.com//charts/#{ticker}_peg.jpeg' />", ticker: ticker})
+				graphs.push({content: "<img src='http://www.nasdaq.com//charts/#{ticker}_peg.jpeg' />", ticker: ticker, id: 'graph'})
 			end
 			graph = make_tabs graphs
 		when "Diluted EPS"
 			graphs = []
 			tickers.each do |ticker|
-				graphs.push({graph: "<img src='http://www.nasdaq.com//charts/#{ticker}_epss.jpeg' />", ticker: ticker})
+				graphs.push({content: "<img src='http://www.nasdaq.com//charts/#{ticker}_epss.jpeg' />", ticker: ticker, id: 'graph'})
 			end
 			graph = make_tabs graphs
 		when "Quarterly earnings growth"
 			graphs = []
 			tickers.each do |ticker|
-				graphs.push({graph: "<img src='http://www.nasdaq.com//charts/#{ticker}_egr.jpeg' />", ticker: ticker})
+				graphs.push({content: "<img src='http://www.nasdaq.com//charts/#{ticker}_egr.jpeg' />", ticker: ticker, id: 'graph'})
 			end
 		else
 			graph = "<!-- TradingView Widget BEGIN -->
@@ -53,22 +53,6 @@ module App::GraphsHelper
 							<!-- TradingView Widget END -->"
 		end
 		graph
-	end
-
-	def make_tabs graphs
-		markup = '<ul class="nav nav-tabs">'
-		graphs.each_with_index do |graph, index|
-			markup += "<li class='#{'active' if graph.equal? graphs.first}'><a href='##{index}' data-toggle='tab'>#{graph[:ticker]}</a></li>"
-		end
-		markup += '</ul>'
-
-
-		markup += '<div class="tab-content">'
-		graphs.each_with_index do |graph, index|
-			markup += "<div class='tab-pane #{'active' if graph.equal? graphs.first}' id='#{index}'>#{graph[:graph]}</div>"
-		end
-		markup += "</div>"
-		markup
 	end
 
 end

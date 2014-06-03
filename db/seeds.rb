@@ -168,7 +168,7 @@ intent = Intent.create(name: 'PEG Ratio', code:"pull_from_yahoo('r5')")
 match_phrases_to_intent(['PEG', 'peg ratio', 'p/eg ratio', 'p/eg', 'price to earnings growth', 'price to earnings growth ratio'], intent)
 
 # PE Ratio
-intent = Intent.create(name: 'PE Ratio', code: 'pull_from_yahoo(r0")')
+intent = Intent.create(name: 'PE Ratio', code: 'pull_from_yahoo("r0")')
 match_phrases_to_intent(['PE', 'p/e', 'PE Ratio', 'P/E ratio', 'price to earnings ratio', 'price to earnings'], intent)
 
 # Previous Close
@@ -459,8 +459,7 @@ Intent.create(name: '', code: '')
 match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
 
 # Institutional Holdings
-# TODO
-Intent.create(name: '', code: '')
+intent = Intent.create(name: 'Institutional Holdings', code: '["http://whalewisdom.com/stock/holdings?id=#{whalewisdom_stock_id}&q1=#{whalewisdom_quarter_id}&change_filter=1,2,3,4,5&_search=false&rows=25&page=1&sidx=shares_change&sord=asc", "http://whalewisdom.com/stock/holdings?id=#{whalewisdom_stock_id}&q1=#{whalewisdom_quarter_id}&change_filter=1,2,3,4,5&_search=false&rows=25&page=1&sidx=shares_change&sord=desc"]')
 match_phrases_to_intent(['institutional holdings', '13f institutional holdings', '13f institutional'], intent)
 
 
