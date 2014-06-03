@@ -31,7 +31,7 @@ class Stock
 	end
 
 	def yahoo_key_stats stat
-		endpoint = "http://www.kimonolabs.com/api/6h5bewws?apikey=dc1715b533f396e15a4a43914c9c901f"
+		endpoint = "http://www.kimonolabs.com/api/6h5bewws?apikey=dc1715b533f396e15a4a43914c9c901f&s=#{@ticker}"
 		
 		begin 
 			response = RestClient.get(endpoint)
