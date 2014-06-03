@@ -26,7 +26,7 @@ gem 'spring', group: :development
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'debugger'
+  #gem 'debugger'
   # Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
 end
@@ -41,6 +41,7 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'haml-rails'
 gem 'nokogiri'
+gem 'rest-client'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

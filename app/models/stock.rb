@@ -1,7 +1,9 @@
 require 'csv'
 require 'open-uri'
-require 'nokogiri'
+#require 'nokogiri'
 require 'rss'
+require 'json'
+require 'rest_client'
 
 class Stock
 
@@ -24,9 +26,29 @@ class Stock
 	end
 
 	def percent_change_yahoo tag_value, tag_percent
-		endpoint = "http://download.finance.yahoo.com/d/quotes.csv?s=#{@ticker}&f=#{tag_value}, #{tag_percent}"
+		endpoint = "http://download.finance.yahoo.com/d/quotes.csv?s=#{@ticker}&f=#{tag_value},#{tag_percent}"
 		data = CSV.parse(open(endpoint))
 		data[0][0]+"(#{data[0][2]})"
+	end
+
+	def yahoo_key_stats stat
+		endpoint = "http://www.kimonolabs.com/api/6h5bewws?apikey=dc1715b533f396e15a4a43914c9c901f&s=#{@ticker}"
+		
+		begin 
+			response = RestClient.get(endpoint)
+		rescue 
+			#try again 
+			response = RestClient.get(endpoint)
+		end
+
+		parsed = JSON.parse(response)
+		results = parsed['results']['collection1'].map{|elem| {elem['property_name'] => elem['property_value']}}
+		new_results = results.reject {|result| !result.keys[0].downcase.include? stat}
+
+		keys = [] 
+		new_results.each {|elem| keys.push(elem.keys[0])}
+		shortest = keys.min_by(&:length)
+		new_results.each {|res| return res[shortest] if res.keys[0].eql? shortest}
 	end
 
 	def ticker
