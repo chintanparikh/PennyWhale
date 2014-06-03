@@ -397,13 +397,13 @@ match_phrases_to_intent(['last split factor', 'last split'], intent)
 intent = Intent.create(name: 'Last Split Date', code: "yahoo_key_stats('last split date')")
 match_phrases_to_intent(['last split date'], intent)
 
-# Both Holdings
-intent = Intent.create(name: 'Both Holdings', code: "yahoo_key_stats('both holdings')")
-match_phrases_to_intent(['holdings', '13f holdings', 'insider and institutional holdings', '13f', '13f forms'], intent)
+# # Both Holdings
+# intent = Intent.create(name: 'Both Holdings', code: "yahoo_key_stats('both holdings')")
+# match_phrases_to_intent(['holdings', '13f holdings', 'insider and institutional holdings', '13f', '13f forms'], intent)
 
 # Insider holdings
-intent = Intent.create(name: 'Insider holdings', code: "")
-match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
+# intent = Intent.create(name: 'Insider holdings', code: "")
+# match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
 
 # Institutional Holdings
 intent = Intent.create(name: 'Institutional Holdings', code: '["http://whalewisdom.com/stock/holdings?id=#{whalewisdom_stock_id}&q1=#{whalewisdom_quarter_id}&change_filter=1,2,3,4,5&_search=false&rows=25&page=1&sidx=shares_change&sord=asc", "http://whalewisdom.com/stock/holdings?id=#{whalewisdom_stock_id}&q1=#{whalewisdom_quarter_id}&change_filter=1,2,3,4,5&_search=false&rows=25&page=1&sidx=shares_change&sord=desc"]')
