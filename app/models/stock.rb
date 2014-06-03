@@ -3,6 +3,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'rss'
 require 'json'
+require 'rest_client'
 
 class Stock
 

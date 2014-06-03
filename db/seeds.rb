@@ -218,191 +218,191 @@ intent = Intent.create(name: 'Year range', code:"pull_from_yahoo('w0')")
 match_phrases_to_intent(['year range', 'years range'], intent)
 
 # Enterprise Value
-Intent.create(name: 'Enterprise Value', code: "yahoo_key_stats('enterprise value')")
+intent = Intent.create(name: 'Enterprise Value', code: "yahoo_key_stats('enterprise value')")
 match_phrases_to_intent(['enterprise value', 'value', 'valuation'], intent)
 
 # Trailing P/E
-Intent.create(name: 'Trailing P/E', code: "yahoo_key_stats('trailing p/e')")
+intent = Intent.create(name: 'Trailing P/E', code: "yahoo_key_stats('trailing p/e')")
 match_phrases_to_intent(['Trailing PE', 'trailing p/e', 'Trailing PE Ratio', 'Trailing P/E ratio', 'trailing price to earnings ratio', 'trailing price to earnings'], intent)
 
 # Forward P/E
-Intent.create(name: 'Forward P/E', code: "yahoo_key_stats('forward p/e')")
+intent = Intent.create(name: 'Forward P/E', code: "yahoo_key_stats('forward p/e')")
 match_phrases_to_intent(['Forward PE', 'forward p/e', 'Forward PE Ratio', 'Forward P/E ratio', 'forward price to earnings ratio', 'forward price to earnings'], intent)
 
 # Price/Sales
-Intent.create(name: 'Price/Sales', code: "yahoo_key_stats('price/sales)")
+intent = Intent.create(name: 'Price/Sales', code: "yahoo_key_stats('price/sales)")
 match_phrases_to_intent(['Price/Sales', 'Price/Sales ratio', 'PS ratio', 'ps', 'p/s', 'p/s ratio', 'price sales', 'price sales ratio'], intent)
 
 # Price/Book
-Intent.create(name: 'Price/Book', code: "yahoo_key_stats('price/book')")
+intent = Intent.create(name: 'Price/Book', code: "yahoo_key_stats('price/book')")
 match_phrases_to_intent(['Price/Book', 'Price/Book ratio', 'PB ratio', 'pb', 'p/b', 'p/b ratio', 'price book', 'price book ratio'], intent)
 
 # Enterprise Value/Revenue
-Intent.create(name: 'Enterprise Value/Revenue', code: "yahoo_key_stats('enterprise value/revenue')")
+intent = Intent.create(name: 'Enterprise Value/Revenue', code: "yahoo_key_stats('enterprise value/revenue')")
 match_phrases_to_intent(['Enterprise Value/Revenue', 'ev/r', 'enterprise value revenue', 'evr ratio', 'evr', 'enterprise value over revenue'], intent)
 
 # Enterprise Value/EBITDA
-Intent.create(name: 'Enterprise Value/EBITDA', code: "yahoo_key_stats('enterprise value/ebitda')")
+intent = Intent.create(name: 'Enterprise Value/EBITDA', code: "yahoo_key_stats('enterprise value/ebitda')")
 match_phrases_to_intent(['Enterprise Value/EBITDA', 'Enterprise Value over EBITDA'], intent)
 
 # Fiscal year ends
-Intent.create(name: 'Fiscal year ends', code: "yahoo_key_stats('fiscal year ends')")
+intent = Intent.create(name: 'Fiscal year ends', code: "yahoo_key_stats('fiscal year ends')")
 match_phrases_to_intent(['Fiscal year ends', 'end of fiscal year'], intent)
 
 # Most recent quarter
-Intent.create(name: 'Most recent quarter', code: "yahoo_key_stats('most recent quarter')")
+intent = Intent.create(name: 'Most recent quarter', code: "yahoo_key_stats('most recent quarter')")
 match_phrases_to_intent(['Most recent quarter'], intent)
 
 # Profit margin
-Intent.create(name: 'Profit Margin', code: "yahoo_key_stats('profit margin')")
+intent = Intent.create(name: 'Profit Margin', code: "yahoo_key_stats('profit margin')")
 match_phrases_to_intent(['Profit margin'], intent)
 
 # Operating margin
-Intent.create(name: 'Operating margin', code: "yahoo_key_stats('operating margin')")
+intent = Intent.create(name: 'Operating margin', code: "yahoo_key_stats('operating margin')")
 match_phrases_to_intent(['operating margin'], intent)
 
 # Return on assets
-Intent.create(name: 'Return on assets', code: "yahoo_key_stats('return on assets')")
+intent = Intent.create(name: 'Return on assets', code: "yahoo_key_stats('return on assets')")
 match_phrases_to_intent(['return on assets', 'roa'], intent)
 
 # Return on equity
-Intent.create(name: 'Return on equity', code: "yahoo_key_stats('return on equity')")
+intent = Intent.create(name: 'Return on equity', code: "yahoo_key_stats('return on equity')")
 match_phrases_to_intent(['return on equity', 'roe'], intent)
 
 # Revenue per share
-Intent.create(name: 'Revenue per Share', code: "yahoo_key_stats('return per share')")
+intent = Intent.create(name: 'Revenue per Share', code: "yahoo_key_stats('return per share')")
 match_phrases_to_intent(['revenue per share', 'rs', 'r/s', 'rs ratio', 'r/s ratio', 'revenue/share'], intent)
 
 # Quarterly revenue growth
-Intent.create(name: 'Quarterly Revenue Growth', code: "yahoo_key_stats('quarterly revenue growth')")
+intent = Intent.create(name: 'Quarterly Revenue Growth', code: "yahoo_key_stats('quarterly revenue growth')")
 match_phrases_to_intent(['quarterly revenue growth', 'revenue growth for last quarter', 'revenue growth over last quarter'], intent)
 
 # Gross profit
-Intent.create(name: 'Gross profit', code: "yahoo_key_stats('gross profit')")
+intent = Intent.create(name: 'Gross profit', code: "yahoo_key_stats('gross profit')")
 match_phrases_to_intent(['gross profit'], intent)
 
 # Net income available to common
-Intent.create(name: 'Net income available to common', code: "yahoo_key_stats('net income available to common')")
+intent = Intent.create(name: 'Net income available to common', code: "yahoo_key_stats('net income available to common')")
 match_phrases_to_intent(['net income available to common'], intent)
 
 # Quarterly earnings growth
-Intent.create(name: 'Quarterly earnings growth', code: "yahoo_key_stats('net income available to common')")
+intent = Intent.create(name: 'Quarterly earnings growth', code: "yahoo_key_stats('net income available to common')")
 match_phrases_to_intent(['quarterly earnings growth', 'earnings growth for last quarter', 'earnings growth over last quarter'], intent)
 
 # Total cash
-Intent.create(name: 'Total cash', code: "yahoo_key_stats('total cash')")
+intent = Intent.create(name: 'Total cash', code: "yahoo_key_stats('total cash')")
 match_phrases_to_intent(['total cash', 'cash'], intent)
 
 # Total cash per share
-Intent.create(name: 'Total cash per share', code: "yahoo_key_stats('total cash per share')")
+intent = Intent.create(name: 'Total cash per share', code: "yahoo_key_stats('total cash per share')")
 match_phrases_to_intent(['total cash per share', 'cash per share', 'total cash/share', 'cash/share', 'tcs', 'tc/s'], intent)
 
 # Total debt
-Intent.create(name: 'Total debt', code: "yahoo_key_stats('total debt')")
+intent = Intent.create(name: 'Total debt', code: "yahoo_key_stats('total debt')")
 match_phrases_to_intent(['total debt', 'debt'], intent)
 
 # Total debt/equity
-Intent.create(name: 'Total debt/equity', code: "yahoo_key_stats('total debt/equity')")
+intent = Intent.create(name: 'Total debt/equity', code: "yahoo_key_stats('total debt/equity')")
 match_phrases_to_intent(['total debt/equity', 'debt/equity', 'tbe', 'tb/e'], intent)
 
 # Current ratio
-Intent.create(name: 'Current ratio', code: "yahoo_key_stats('current ratio')")
+intent = Intent.create(name: 'Current ratio', code: "yahoo_key_stats('current ratio')")
 match_phrases_to_intent(['current ratio', 'ratio'], intent)
 
 # Operating Cash Flow
-Intent.create(name: 'Operating cash flow', code: "yahoo_key_stats('operating cash flow')")
+intent = Intent.create(name: 'Operating cash flow', code: "yahoo_key_stats('operating cash flow')")
 match_phrases_to_intent(['operating cash flow', 'cash flow'], intent)
 
 # Levered Free Cash Flow
-Intent.create(name: 'Levered Free Cash Flow', code: "yahoo_key_stats('levered free cash flow')")
+intent = Intent.create(name: 'Levered Free Cash Flow', code: "yahoo_key_stats('levered free cash flow')")
 match_phrases_to_intent(['levered free cash flow', 'free cash flow'], intent)
 
 # Beta
-Intent.create(name: 'Beta', code: "yahoo_key_stats('beta')")
+intent = Intent.create(name: 'Beta', code: "yahoo_key_stats('beta')")
 match_phrases_to_intent(['beta', 'risk'], intent)
 
 # 52 week change
-Intent.create(name: '52 week change', code: "yahoo_key_stats('52 week change')")
+intent = Intent.create(name: '52 week change', code: "yahoo_key_stats('52 week change')")
 match_phrases_to_intent(['52 week change', 'year change'], intent)
 
 # s&p 52 week change
-Intent.create(name: 'S&P 52 week change', code: "yahoo_key_stats('s&p 52 week change')")
+intent = Intent.create(name: 'S&P 52 week change', code: "yahoo_key_stats('s&p 52 week change')")
 match_phrases_to_intent(['S&P500 52 week change', 'S&P500 year change'], intent)
 
 # 3 month average volume
-Intent.create(name: '3 month average volume', code: "yahoo_key_stats('3 month average volume')")
+intent = Intent.create(name: '3 month average volume', code: "yahoo_key_stats('3 month average volume')")
 match_phrases_to_intent(['Average 3 month volume', '3 month volume', 'Average three month volume', 'three month volume'], intent)
 
 # 10 day average volume
-Intent.create(name: '10 day average volume', code: "yahoo_key_stats('10 day average volume')")
+intent = Intent.create(name: '10 day average volume', code: "yahoo_key_stats('10 day average volume')")
 match_phrases_to_intent(['Average 10 day volume', '10 day volume', 'Average ten day volume', 'ten day volume'], intent)
 
 # Shares Outstanding
-Intent.create(name: 'Shares outstanding', code: "yahoo_key_stats('shares outstanding')")
+intent = Intent.create(name: 'Shares outstanding', code: "yahoo_key_stats('shares outstanding')")
 match_phrases_to_intent(['shares outstanding', 'outstanding shares'], intent)
 
 # % held by insiders
-Intent.create(name: '% held by insiders', code: "yahoo_key_stats('% held by insiders')")
+intent = Intent.create(name: '% held by insiders', code: "yahoo_key_stats('% held by insiders')")
 match_phrases_to_intent(['percent held by insiders', 'percentage held by insiders'], intent)
 
 # % held by institutions
-Intent.create(name: '% held by institutions', code: "yahoo_key_stats('% held by institutions')")
+intent = Intent.create(name: '% held by institutions', code: "yahoo_key_stats('% held by institutions')")
 match_phrases_to_intent(['percent held by institutions', 'percentage held by institutions'], intent)
 
 # Shares short
-Intent.create(name: 'Shares short', code: "yahoo_key_stats('shares short')" )
+intent = Intent.create(name: 'Shares short', code: "yahoo_key_stats('shares short')" )
 match_phrases_to_intent(['shares short'], intent)
 
 # Short ratio
-Intent.create(name: 'Short ratio', code: "yahoo_key_stats('shares ratio')")
+intent = Intent.create(name: 'Short ratio', code: "yahoo_key_stats('shares ratio')")
 match_phrases_to_intent(['short ratio', 'short'], intent)
 
 # Short % of float
-Intent.create(name: 'Short % of float', code: "yahoo_key_stats('shorts % of float')")
+intent = Intent.create(name: 'Short % of float', code: "yahoo_key_stats('shorts % of float')")
 match_phrases_to_intent(['short percent of float', 'short percentage of float'], intent)
 
 # Shares short
-Intent.create(name: 'Shares short', code: "yahoo_key_stats('shares short')")
+intent = Intent.create(name: 'Shares short', code: "yahoo_key_stats('shares short')")
 match_phrases_to_intent(['shares short past month', 'past month shares short',' shares short last month', 'last month shares short', 'shares short previous month', 'previous month shares short'], intent)
 
 # Forward annual dividend rate
-Intent.create(name: 'Forward annual dividend rate', code: "yahoo_key_stats('forward annual dividend rate')")
+intent = Intent.create(name: 'Forward annual dividend rate', code: "yahoo_key_stats('forward annual dividend rate')")
 match_phrases_to_intent(['forward annual dividend rate'], intent)
 
 # Forward annual dividend yield
-Intent.create(name: 'Forward annual dividend yield', code: "yahoo_key_stats('forward annual dividend yield')")
+intent = Intent.create(name: 'Forward annual dividend yield', code: "yahoo_key_stats('forward annual dividend yield')")
 match_phrases_to_intent(['forward annual dividend yield', 'forward annual dividend'], intent)
 
 # Trailing annual dividend rate
-Intent.create(name: 'Trailing annual dividend rate', code: "yahoo_key_stats('trailing annual dividend rate')")
+intent = Intent.create(name: 'Trailing annual dividend rate', code: "yahoo_key_stats('trailing annual dividend rate')")
 match_phrases_to_intent(['trailing annual dividend rate'], intent)
 
 # Trailing annual dividend yield
-Intent.create(name: 'Trailing annual dividend yield', code: "yahoo_key_stats('trailing annual dividend yield')")
+intent = Intent.create(name: 'Trailing annual dividend yield', code: "yahoo_key_stats('trailing annual dividend yield')")
 match_phrases_to_intent(['trailing annual dividend yield', 'trailing annual dividend'], intent)
 
 # 5 year average dividend yield
-Intent.create(name: '5 year average dividend yield', code: "yahoo_key_stats('5 year average dividend yield')")
+intent = Intent.create(name: '5 year average dividend yield', code: "yahoo_key_stats('5 year average dividend yield')")
 match_phrases_to_intent(['5 year average dividend yield', 'five year average dividend yield', '5 year dividend yield', 'five year divident yield'], intent)
 
 # Payout ratio
-Intent.create(name: 'Payout ratio', code: "yahoo_key_stats('payout ratio')")
+intent = Intent.create(name: 'Payout ratio', code: "yahoo_key_stats('payout ratio')")
 match_phrases_to_intent(['payout ratio'], intent)
 
 # Last Split Factor
-Intent.create(name: 'Last Split Factor', code: "yahoo_key_stats('last split factor')")
+intent = Intent.create(name: 'Last Split Factor', code: "yahoo_key_stats('last split factor')")
 match_phrases_to_intent(['last split factor', 'last split'], intent)
 
 # Last Split Date
-Intent.create(name: 'Last Split Date', code: "yahoo_key_stats('last split date')")
+intent = Intent.create(name: 'Last Split Date', code: "yahoo_key_stats('last split date')")
 match_phrases_to_intent(['last split date'], intent)
 
 # Both Holdings
-Intent.create(name: 'Both Holdings', code: "yahoo_key_stats('both holdings')")
+intent = Intent.create(name: 'Both Holdings', code: "yahoo_key_stats('both holdings')")
 match_phrases_to_intent(['holdings', '13f holdings', 'insider and institutional holdings', '13f', '13f forms'], intent)
 
 # Insider holdings
-Intent.create(name: 'Insider holdings', code: "")
+intent = Intent.create(name: 'Insider holdings', code: "")
 match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
 
 # Institutional Holdings
