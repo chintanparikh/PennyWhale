@@ -1,6 +1,6 @@
 require 'csv'
 require 'open-uri'
-require 'nokogiri'
+#require 'nokogiri'
 require 'rss'
 require 'json'
 require 'rest_client'
@@ -43,7 +43,7 @@ class Stock
 
 		parsed = JSON.parse(response)
 		results = parsed['results']['collection1'].map{|elem| {elem['property_name'] => elem['property_value']}}
-		new_results = results.reject {|result| !result.keys[0].downcase.include? "revenue"}
+		new_results = results.reject {|result| !result.keys[0].downcase.include? stat}
 
 		keys = [] 
 		new_results.each {|elem| keys.push(elem.keys[0])}
