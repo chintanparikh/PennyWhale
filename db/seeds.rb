@@ -303,7 +303,7 @@ match_phrases_to_intent(['Total Debt', 'Debt'], intent)
 
 # Total debt/equity
 intent = Intent.create(name: 'Total debt/equity', code: "yahoo_key_stats('total debt/equity')")
-match_phrases_to_intent(['Total Debt/Equity', 'Debt/Equity', intent)
+match_phrases_to_intent(['Total Debt/Equity', 'Debt/Equity'], intent)
 
 # Current ratio
 intent = Intent.create(name: 'Current ratio', code: "yahoo_key_stats('current ratio')")
