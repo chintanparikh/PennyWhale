@@ -36,7 +36,7 @@ class App::QueriesController < App::BaseController
 				@suggestions += Phrase.select([:phrase])
 															.where("phrase #{like} ?", "%#{params[:query].split(' ')[i..length].join(' ')}%")
 															.order("LENGTH(phrase) ASC")
-															.map{|p| {input: params[:query], phrase: params[:query].gsub(params[:query].split(' ')[i..length].join(' '), p.phrase)}}
+															.map{|p| {input: params[:query], phrase: params[:query].reverse.sub(params[:query].split(' ')[i..length].join(' ').reverse, p.phrase.reverse).reverse}}
 			end		
 		end
 

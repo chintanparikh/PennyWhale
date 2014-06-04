@@ -275,7 +275,7 @@ match_phrases_to_intent(['Revenue per Share', 'R/S', 'RS Ratio', 'R/S Ratio', 'R
 
 # Quarterly revenue growth
 intent = Intent.create(name: 'Quarterly Revenue Growth', code: "yahoo_key_stats('qtrly revenue growth')")
-match_phrases_to_intent(['quarterly revenue growth', 'revenue growth for last quarter', 'revenue growth over last quarter'], intent)
+match_phrases_to_intent(['Wuarterly Revenue Growth', 'Revenue Growth for Last Quarter', 'Revenue Growth over Last Quarter'], intent)
 
 # Gross profit
 intent = Intent.create(name: 'Gross profit', code: "yahoo_key_stats('gross profit')")
@@ -311,7 +311,7 @@ match_phrases_to_intent(['Current Ratio', 'Ratio'], intent)
 
 # Operating Cash Flow
 intent = Intent.create(name: 'Operating cash flow', code: "yahoo_key_stats('operating cash flow')")
-match_phrases_to_intent(['Pperating Cash Flow', 'Cash Flow'], intent)
+match_phrases_to_intent(['Operating Cash Flow', 'Cash Flow'], intent)
 
 # Levered Free Cash Flow
 intent = Intent.create(name: 'Levered Free Cash Flow', code: "yahoo_key_stats('levered free cash flow')")
