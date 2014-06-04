@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527165420) do
+ActiveRecord::Schema.define(version: 20140604222637) do
 
   create_table "intents", force: true do |t|
-    t.string   "code"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "code"
   end
 
   create_table "phrases", force: true do |t|
