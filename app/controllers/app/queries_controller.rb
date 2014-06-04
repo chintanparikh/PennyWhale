@@ -9,7 +9,9 @@ class App::QueriesController < App::BaseController
 
 		query = params[:query].gsub("'", '').gsub('"', '')
 
-		phrases = Phrase.where("'#{query}' LIKE '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
+		like = (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
+
+		phrases = Phrase.where("'#{query}' #{like} '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
 		phrases = phrases.sort{|a, b| string_distance(query, a.phrase) <=> string_distance(query, b.phrase)}
 		phrase = phrases[0]	
 
