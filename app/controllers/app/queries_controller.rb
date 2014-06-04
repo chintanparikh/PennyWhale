@@ -1,20 +1,23 @@
 class App::QueriesController < App::BaseController
+	include App::QueriesHelper
 
 	def index
 	end
 
 	def execute
-		phrase = Phrase.find_by_phrase(params[:query])
+		stocks = params[:query].scan(/\$([a-zA-Z.]+)/).flatten.map{|stock| Stock.find(stock)}
+		phrases = Phrase.where("'#{params[:query]}' LIKE '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
+		phrases = phrases.sort{|a, b| string_distance(params[:query], a.phrase) <=> string_distance(params[:query], b.phrase)}
+		phrase = phrases[0]
+
 		# Check if phrase isn't found
 		@intent = phrase.intent
-
-		stocks = params[:tickers].split.map{|stock| Stock.find(stock)}
 		
 		@output = stocks.map do |stock|
 			{ticker: stock.ticker, data: @intent.get_data(stock.get_binding)}
 		end
 
-		@news = Stock.get_news params[:tickers].split
+		@news = Stock.get_news stocks.map{|stock| stock.ticker}
 	end
 
 	def autocomplete
