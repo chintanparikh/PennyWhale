@@ -7,10 +7,10 @@ class App::QueriesController < App::BaseController
 	def execute
 		stocks = params[:query].scan(/\$([a-zA-Z.]+)/).flatten.map{|stock| Stock.find(stock)}
 
-		params[:query].gsub!("'", '').gsub!('"', '')
+		query = params[:query].gsub("'", '').gsub('"', '')
 
-		phrases = Phrase.where("'#{params[:query]}' LIKE '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
-		phrases = phrases.sort{|a, b| string_distance(params[:query], a.phrase) <=> string_distance(params[:query], b.phrase)}
+		phrases = Phrase.where("'#{query}' LIKE '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
+		phrases = phrases.sort{|a, b| string_distance(query, a.phrase) <=> string_distance(query, b.phrase)}
 		phrase = phrases[0]	
 
 		# Check if phrase isn't found
