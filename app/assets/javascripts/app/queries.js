@@ -60,7 +60,9 @@ $(document).ready(function()
 
 	$("#query").autocomplete({
 		serviceUrl: '/app/queries/autocomplete.json',
-		triggerSelectOnValidInput: false
+		triggerSelectOnValidInput: false,
+		minChars: 2,
+		preventBadQueries: false
 	});
 
 	// Code for populating 13f tables. Needs to be moved into it's own file at some point
