@@ -1,6 +1,6 @@
 require 'csv'
 require 'open-uri'
-#require 'nokogiri'
+require 'nokogiri'
 require 'rss'
 require 'json'
 require 'rest_client'
@@ -96,4 +96,14 @@ class Stock
 		text = open(url).read
 		/^\s+whalewisdom.Stock.current_quarter_id=([0-9]+)/.match(text)[1]
 	end
+
+	def dataroma_holdings
+		endpoint = "http://www.dataroma.com/m/m_activity.php?m=#{@ticker}&typ=a"
+		doc = Nokogiri::HTML(open(endpoint))
+
+		table = doc.find('#grid')
+
+		table
+	end
+	
 end
