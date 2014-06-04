@@ -28,8 +28,19 @@ class App::QueriesController < App::BaseController
 	def autocomplete
 		# LIKE is case insensitive in sqlite (testing, develop), but not in postgres (staging, production), so we need ILIKE for those cases
 		like = (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
-		@suggestions = Phrase.select([:phrase]).where("phrase #{like} ?", "%#{params[:query]}%").order("LENGTH(phrase) ASC").map{|p| p.phrase}
-		
+		@suggestions = []
+		length = params[:query].split(' ').count
+
+		0.upto(length - 1).each do |i|
+			if @suggestions.empty?
+				@suggestions += Phrase.select([:phrase])
+															.where("phrase #{like} ?", "%#{params[:query].split(' ')[i..length].join(' ')}%")
+															.order("LENGTH(phrase) ASC")
+															.map{|p| {input: params[:query], phrase: params[:query].reverse.sub(params[:query].split(' ')[i..length].join(' ').reverse, p.phrase.reverse).reverse}}
+			end		
+		end
+
+
 		@resp = {suggestions: @suggestions}
 
 		respond_to do |format|
