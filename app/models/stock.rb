@@ -104,7 +104,6 @@ class Stock
 		table = doc.find('#grid')
 
 		table
-
 	end
 	
 end

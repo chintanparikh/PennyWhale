@@ -23,6 +23,8 @@ class App::QueriesController < App::BaseController
 		end
 
 		@news = Stock.get_news stocks.map{|stock| stock.ticker}
+
+
 	end
 
 	def autocomplete
