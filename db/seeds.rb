@@ -407,7 +407,7 @@ match_phrases_to_intent(['Last Split Date'], intent)
 
 # Institutional Holdings
 intent = Intent.create(name: 'Institutional Holdings', code: 'dataroma_holdings')
-match_phrases_to_intent(['Institutional Holdings', '13F Institutional Holdings', '13F Institutional'], intent)
+match_phrases_to_intent(['Institutional Holdings', '13F Institutional Holdings', '13F Institutional', 'Holdings'], intent)
 
 
 
