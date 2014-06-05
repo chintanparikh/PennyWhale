@@ -1,8 +1,17 @@
-.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      = link_to "PennyWhale", "#"
-      %button.navbar-toggle{"data-target" => "#navbar-main", "data-toggle" => "collapse", type: "button"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+.container
+  .row
+    .col-lg-2
+    .col-lg-8
+      .navbar.navbar-default
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "PennyWhale", "#", {class: 'label label-primary', id: 'logo-text'}
+        %ul.nav.navbar-nav.navbar-right
+          %li 
+            %button{type: 'button', class: 'btn btn-info'} Help
+          %li 
+            %button{type: 'button', class: 'btn btn-info'} Login
+    .col-lg-2
