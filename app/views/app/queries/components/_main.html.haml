@@ -12,24 +12,30 @@
             = out[:data]
   - else
     #13f
-      - @output.each do |out|
-        = raw out[:data]
-      / %ul.nav.nav-tabs
-      /   - @output.each do |out|
-      /     %li{class: ("active" if out.equal? @output.first)}
-      /       %a{href: "##{out[:ticker]}tab", data: {toggle: 'tab'}}
-      /         = out[:ticker]
-      / .tab-content
-      /   - @output.each do |out|
-      /     .tab-pane{id: "#{out[:ticker]}tab"}
-      /       %table.table{data: {url: out[:data][0]}}
-      /         %thead
-      /           %tr
-      /             %th Filer
-      /             %th Shares Held
-      /             %th Market Value
-      /             %th % of Portfolio
-      /             %th Prior %
-      /             %th Ranking
-      /             %th Change in Shares
-      /         %tbody
+      %ul.nav.nav-tabs
+        - @output.each do |out|
+          %li{class: ("active" if out.equal? @output.first)}
+            %a{href: "##{out[:ticker]}tab", data: {toggle: 'tab'}}
+              = out[:ticker]
+      .tab-content
+        - @output.each do |out|
+          .tab-pane{id: "#{out[:ticker]}tab"}
+            %table.table
+              %thead
+                %tr
+                  %th Stock
+                  %th Activity
+                  %th Share change
+                  %th % change to Portfolio
+              %tbody
+                - out[:data].each do |row|
+                  -debugger
+                  %tr
+                    %td
+                      = row["stock"]["text"]
+                    %td
+                      = row["activity"]
+                    %td
+                      = row["share_change"] 
+                    %td
+                      = row["percentage"]
