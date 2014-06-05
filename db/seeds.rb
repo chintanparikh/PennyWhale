@@ -406,7 +406,7 @@ match_phrases_to_intent(['Last Split Date'], intent)
 # match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
 
 # Institutional Holdings
-intent = Intent.create(name: 'Institutional Holdings', code: '["http://whalewisdom.com/stock/holdings?id=#{whalewisdom_stock_id}&q1=#{whalewisdom_quarter_id}&change_filter=1,2,3,4,5&_search=false&rows=25&page=1&sidx=shares_change&sord=asc", "http://whalewisdom.com/stock/holdings?id=#{whalewisdom_stock_id}&q1=#{whalewisdom_quarter_id}&change_filter=1,2,3,4,5&_search=false&rows=25&page=1&sidx=shares_change&sord=desc"]')
+intent = Intent.create(name: 'Institutional Holdings', code: 'dataroma_holdings')
 match_phrases_to_intent(['Institutional Holdings', '13F Institutional Holdings', '13F Institutional'], intent)
 
 

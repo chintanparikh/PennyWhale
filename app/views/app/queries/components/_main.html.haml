@@ -19,15 +19,26 @@
               = out[:ticker]
       .tab-content
         - @output.each do |out|
-          .tab-pane{id: "#{out[:ticker]}tab"}
-            %table.table{data: {url: out[:data][0]}}
+          .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
+            %table.table
               %thead
                 %tr
-                  %th Filer
-                  %th Shares Held
-                  %th Market Value
-                  %th % of Portfolio
-                  %th Prior %
-                  %th Ranking
-                  %th Change in Shares
+                  %th Stock
+                  %th Activity
+                  %th Share change
+                  %th % change to Portfolio
               %tbody
+                - out[:data].each do |row|
+                  %tr
+                    %td
+                      = row["stock"]["text"]
+                    - if row["activity"].include? "Add" or row["activity"].include? "Buy"
+                      %td{style: "color:#177D0A"}
+                        = row["activity"] 
+                    - else 
+                      %td{style: "color:#C40606"}
+                        = row["activity"] 
+                    %td
+                      = row["share_change"] 
+                    %td
+                      = row["percentage"] + '%'
