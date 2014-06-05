@@ -86,7 +86,7 @@ class Stock
 	end
 
 	def dataroma_holdings
-		endpoint = "http://www.kimonolabs.com/api/avijisro?apikey=dc1715b533f396e15a4a43914c9c901f&m=#{ticker}"
+		endpoint = "http://www.kimonolabs.com/api/avijisro?apikey=dc1715b533f396e15a4a43914c9c901f&m=#{@ticker}"
 
 		begin 
 			response = RestClient.get(endpoint)

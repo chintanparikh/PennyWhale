@@ -19,7 +19,7 @@
               = out[:ticker]
       .tab-content
         - @output.each do |out|
-          .tab-pane{id: "#{out[:ticker]}tab"}
+          .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
             %table.table
               %thead
                 %tr
@@ -29,13 +29,16 @@
                   %th % change to Portfolio
               %tbody
                 - out[:data].each do |row|
-                  -debugger
                   %tr
                     %td
                       = row["stock"]["text"]
-                    %td
-                      = row["activity"]
+                    - if row["activity"].include? "Add" or row["activity"].include? "Buy"
+                      %td{style: "color:#177D0A"}
+                        = row["activity"] 
+                    - else 
+                      %td{style: "color:#C40606"}
+                        = row["activity"] 
                     %td
                       = row["share_change"] 
                     %td
-                      = row["percentage"]
+                      = row["percentage"] + '%'
