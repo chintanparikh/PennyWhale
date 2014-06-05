@@ -85,25 +85,22 @@ class Stock
 		ret
 	end
 
-	def whalewisdom_stock_id
-		url = "http://whalewisdom.com/stock/#{@ticker}"
-		text = open(url).read
-		/^\s+whalewisdom.Stock.stock_id=([0-9]+)/.match(text)[1]
-	end
-
-	def whalewisdom_quarter_id
-		url = "http://whalewisdom.com/stock/#{@ticker}"
-		text = open(url).read
-		/^\s+whalewisdom.Stock.current_quarter_id=([0-9]+)/.match(text)[1]
-	end
-
 	def dataroma_holdings
-		endpoint = "http://www.dataroma.com/m/m_activity.php?m=#{@ticker}&typ=a"
-		doc = Nokogiri::HTML(open(endpoint))
+		endpoint = "http://www.kimonolabs.com/api/avijisro?apikey=dc1715b533f396e15a4a43914c9c901f&m=#{ticker}"
 
-		table = doc.find('#grid')
+		begin 
+			response = RestClient.get(endpoint)
+		rescue 
+			#try again 
+			response = RestClient.get(endpoint)
+		end
 
-		table
+		parsed = JSON.parse(response)
+		results = parsed['results']['collection1'].reject{|elem| elem["stock"]["text"].nil?}
+
+		p results
+
+		results
 	end
 	
 end
