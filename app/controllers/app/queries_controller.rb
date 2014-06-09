@@ -60,6 +60,7 @@ class App::QueriesController < App::BaseController
 	end
 
 	def help
+		@intents = Intent.select(:name).map{|i| i.name}
 	end
 
 end

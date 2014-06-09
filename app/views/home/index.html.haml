@@ -1,0 +1,40 @@
+#modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4.modal-title You've been added to the waitlist!
+      .modal-body
+        %p Thanks for signing up. We'll shoot you an email once we're ready.
+        %p
+          We're always looking to talk to investors about how they intend to use our product - if you're interested in talking to us, please email us at
+          = succeed "." do
+            %a{href: "mailto:hello@pennywhale.com"} hello@pennywhale.com
+      .modal-footer
+        %button.btn.btn-primary{"data-dismiss" => "modal", type: "button"} Got it!
+    / /.modal-content
+  / /.modal-dialog
+/ /.modal
+#logo.container
+  = image_tag asset_path('nav-logo.png')
+  %h1 PennyWhale
+#tagline.container
+  %h1
+    Are you ready to
+    %em supercharge
+    your financial research?
+#typed.container
+  %input#example{type: "text"}/
+#email-wrapper.container
+  #form-wrapper
+    #form-input-group.input-group.input-group-lg
+      %form#form1{"accept-charset" => "UTF-8", action: "https://pennywhale.wufoo.com/forms/z16decyt0j9y4ps/#public", autocomplete: "off", enctype: "multipart/form-data", method: "post", name: "form1", novalidate: ""}
+        %input#email-input.form-control{name: "Field1", placeholder: "Email Address", required: "", type: "text"}/
+        %input#idstamp{name: "idstamp", type: "hidden", value: "+976pwqWgGtaxelPLl5vBfhKuBYCYUmYk0jqUt1g6OI="}/
+        %span.input-group-btn
+          %button#email-submit.btn.btn-info{type: "button"} Get early access
+    / /input-group
+%footer
+  %div
+    %p
+      © 2014 PennyWhale. All Rights Reserved.
