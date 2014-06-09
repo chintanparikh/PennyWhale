@@ -17,103 +17,10 @@
           %h4.list-group-item-heading What data can I search for?
           %p.list-group-item-text
             %ul
-              %li After Hours Price
-              %li Annualized Gains
-              %li Ask
-              %li Ask Size
-              %li Average Daily Volume
-              %li Bid
-              %li Bid Size
-              %li Book Value per Share
-              %li Price change
-              %li Change from Fifty Day Moving Average
-              %li Change from Two Hundred Day Moving Average
-              %li Change from Year High
-              %li Commission
-              %li Currency
-              %li Days High
-              %li Days Low
-              %li Days Range
-              %li Days Value Change
-              %li Dividend Pay Date
-              %li Trailing Annual Dividend Yield
-              %li Diluted EPS
-              %li EBITDA
-              %li EPS Estimate Current Year
-              %li EPS Estimate Next Quarter
-              %li EPS Estimate Next Year
-              %li Ex Dividend Date
-              %li 50 Day Moving Average
-              %li Shares Float
-              %li High Limit
-              %li Holdings Gain
-              %li Holdings Value
-              %li Low Limit
-              %li Market Capitalization
-              %li Name
-              %li One Year Target Price
-              %li Open
-              %li PEG Ratio
-              %li PE Ratio
-              %li Previous Close
-              %li Price Book
-              %li Price/EPS estimate for current year
-              %li Price/EPS estimate for next year
-              %li Revenue
-              %li Shares Owned
-              %li Shares Outstanding
-              %li Short Ratio
-              %li 200 Day Moving Average
-              %li Volume
-              %li Year High
-              %li Year Low
-              %li Year range
-              %li Enterprise Value
-              %li Trailing P/E
-              %li Forward P/E
-              %li Price/Sales
-              %li Price/Book
-              %li Enterprise Value/Revenue
-              %li Enterprise Value/EBITDA
-              %li Fiscal year ends
-              %li Most recent quarter
-              %li Profit Margin
-              %li Operating margin
-              %li Return on assets
-              %li Return on equity
-              %li Revenue per Share
-              %li Quarterly Revenue Growth
-              %li Gross profit
-              %li Net income available to common
-              %li Quarterly earnings growth
-              %li Total cash
-              %li Total cash per share
-              %li Total debt
-              %li Total debt/equity
-              %li Current ratio
-              %li Operating cash flow
-              %li Levered Free Cash Flow
-              %li Beta
-              %li 52 week change
-              %li S&P 52 week change
-              %li 3 month average volume
-              %li 10 day average volume
-              %li Shares outstanding
-              %li % held by insiders
-              %li % held by institutions
-              %li Shares short
-              %li Short ratio
-              %li Short % of float
-              %li Shares short
-              %li Forward annual dividend rate
-              %li Forward annual dividend yield
-              %li Trailing annual dividend rate
-              %li Trailing annual dividend yield
-              %li 5 year average dividend yield
-              %li Payout ratio
-              %li Last Split Factor
-              %li Last Split Date
-              %li Institutional Holdings
+              - @intents.each do |intent|
+                %li
+                  = intent
+                
         %a.list-group-item{href: "#"}
           %h4.list-group-item-heading Which funds do you have holdings data for?
           %p.list-group-item-text 
