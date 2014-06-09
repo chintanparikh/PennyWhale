@@ -275,18 +275,18 @@ match_phrases_to_intent(['Revenue per Share', 'R/S', 'RS Ratio', 'R/S Ratio', 'R
 
 # Quarterly revenue growth
 intent = Intent.create(name: 'Quarterly Revenue Growth', code: "yahoo_key_stats('qtrly revenue growth')")
-match_phrases_to_intent(['Wuarterly Revenue Growth', 'Revenue Growth for Last Quarter', 'Revenue Growth over Last Quarter'], intent)
+match_phrases_to_intent(['Quarterly Revenue Growth', 'Revenue Growth for Last Quarter', 'Revenue Growth over Last Quarter'], intent)
 
 # Gross profit
 intent = Intent.create(name: 'Gross profit', code: "yahoo_key_stats('gross profit')")
 match_phrases_to_intent(['Gross profit'], intent)
 
 # Net income available to common
-intent = Intent.create(name: 'Net income available to common', code: "yahoo_key_stats('net income available to common')")
-match_phrases_to_intent(['Net Income Available to Common'], intent)
+intent = Intent.create(name: 'Net income available to common', code: "yahoo_key_stats('net income avl to common')")
+match_phrases_to_intent(['Net Income Available to Common', 'Net Income'], intent)
 
 # Quarterly earnings growth
-intent = Intent.create(name: 'Quarterly earnings growth', code: "yahoo_key_stats('net income available to common')")
+intent = Intent.create(name: 'Quarterly earnings growth', code: "yahoo_key_stats('qtrly earnings growth')")
 match_phrases_to_intent(['Quarterly Earnings Growth', 'Earnings Growth for Last Quarter', 'Earnings Growth over Last Quarter'], intent)
 
 # Total cash
@@ -349,10 +349,6 @@ match_phrases_to_intent(['Percent Held by Insiders', 'Percentage Held by Insider
 intent = Intent.create(name: '% held by institutions', code: "yahoo_key_stats('% held by institutions')")
 match_phrases_to_intent(['Percent Held by Institutions', 'Percentage Held by Institutions'], intent)
 
-# Shares short
-intent = Intent.create(name: 'Shares short', code: "yahoo_key_stats('shares short')" )
-match_phrases_to_intent(['Shares Short'], intent)
-
 # Short ratio
 intent = Intent.create(name: 'Short ratio', code: "yahoo_key_stats('short ratio')")
 match_phrases_to_intent(['Short Ratio', 'short'], intent)
@@ -363,7 +359,7 @@ match_phrases_to_intent(['Short Percent of Float', 'Short Percentage of Float'],
 
 # Shares short
 intent = Intent.create(name: 'Shares short', code: "yahoo_key_stats('shares short')")
-match_phrases_to_intent(['Shares Short Past Month', 'Past Month Shares Short','Shares Short Last Month', 'Last Month Shares Short', 'Shares Short Previous Month', 'Previous Month Shares Short'], intent)
+match_phrases_to_intent(['Shares Short', 'Shares Short Past Month', 'Past Month Shares Short','Shares Short Last Month', 'Last Month Shares Short', 'Shares Short Previous Month', 'Previous Month Shares Short'], intent)
 
 # Forward annual dividend rate
 intent = Intent.create(name: 'Forward annual dividend rate', code: "yahoo_key_stats('forward annual dividend rate')")
