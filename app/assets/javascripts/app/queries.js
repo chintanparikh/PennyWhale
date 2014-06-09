@@ -2,7 +2,7 @@
 $(document).ready(function()
 {
 
-	var c=0, words=['Show me the PE Ratio for $AAPL','Show me the quarterly earnings growth for $FB','How much cash does $TSLA have','Show me the holdings for $GLRE'];
+	var c=0, words=['Show me the PE Ratios for $AAPL vs $GOOG','Show me the quarterly earnings growth for $FB','How much cash does $TSLA have','Show me the holdings for $GLRE'];
 
 
 	function loop(){
