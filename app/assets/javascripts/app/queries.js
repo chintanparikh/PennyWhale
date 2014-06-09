@@ -2,12 +2,12 @@
 $(document).ready(function()
 {
 
-	var c=0, words=['PE Ratio','total debt/equity ratio','revenue','quarterly earnings growth'];
+	var c=0, words=['Show me the PE Ratio for $AAPL','Show me the quarterly earnings growth for $FB','How much cash does $TSLA have','Show me the holdings for $GLRE'];
 
 
 	function loop(){
 	  $('#changer').delay(3000).fadeTo(300,0,function(){
-	     $(this).text( words[++c%words.length]).fadeTo(300,1,loop);
+	     $(this).text(words[++c%words.length]).fadeTo(300,1,loop);
 	  });
 	}
 
