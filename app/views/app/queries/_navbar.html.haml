@@ -1,17 +1,10 @@
 .container
-  .row
-    .col-lg-2
-    .col-lg-8
-      .navbar.navbar-default
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", type: "button"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to "PennyWhale", "#", {class: 'label label-primary', id: 'logo-text'}
-        %ul.nav.navbar-nav.navbar-right
-          %li 
-            %button{type: 'button', class: 'btn btn-info'} Help
-          %li 
-            %button{type: 'button', class: 'btn btn-info'} Login
-    .col-lg-2
+  .row{style:"margin-top:40px"}
+    .col-lg-1
+    .col-lg-7
+      %h4
+        %img{src: "http://www.pennywhale.com/img/nav-logo.png"}
+        Penny
+        %span{style:"color:#4EC4F2;margin-left:-3px"}
+          Whale
+    .col-lg-1

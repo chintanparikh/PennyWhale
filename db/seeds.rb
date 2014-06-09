@@ -23,7 +23,7 @@ match_phrases_to_intent(['Annualized Gain', 'Annualized Gains'], intent)
 
 # Ask (and realtime)
 intent = Intent.create(name: 'Ask', code: 'realtime_pull_from_yahoo("b2", "a0")')
-match_phrases_to_intent(['Ask', 'Ask Price'], intent)
+match_phrases_to_intent(['Ask', 'Ask Price', 'Price'], intent)
 
 # Ask Size
 intent = Intent.create(name: 'Ask Size', code:"pull_from_yahoo('a5')")
