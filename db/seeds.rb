@@ -17,10 +17,6 @@ end
 intent = Intent.create(name: 'After Hours Price', code: "pull_from_yahoo('c8')")
 match_phrases_to_intent(['After Hours', 'After Hours Price', 'After Hours Change'], intent)
 
-# Annualized Gains
-intent = Intent.create(name: 'Annualized Gains', code:"pull_from_yahoo('g3')")
-match_phrases_to_intent(['Annualized Gain', 'Annualized Gains'], intent)
-
 # Ask (and realtime)
 intent = Intent.create(name: 'Ask', code: 'realtime_pull_from_yahoo("b2", "a0")')
 match_phrases_to_intent(['Ask', 'Ask Price', 'Price'], intent)
@@ -125,7 +121,7 @@ match_phrases_to_intent(['Fifty Day Moving Average', '50 Day Moving Average', 'P
 intent = Intent.create(name: 'Shares Float', code:"pull_from_yahoo('f6')")
 match_phrases_to_intent(['Shares Float', 'Float'], intent)
 
-# High Limit
+# High Limit (doesnt work)
 intent = Intent.create(name: 'High Limit', code:"pull_from_yahoo('l2')")
 match_phrases_to_intent(['High Limit'], intent)
 
@@ -133,11 +129,11 @@ match_phrases_to_intent(['High Limit'], intent)
 intent = Intent.create(name: 'Holdings Gain', code: "percent_change_yahoo('g4','g1')")
 match_phrases_to_intent(['Holdings Gain', 'Gain from Holdings', 'Holdings Gain Percentage', 'Percentage Holdings Gain'], intent)
 
-# Holdings Value
+# Holdings Value (doesnt work)
 intent = Intent.create(name: 'Holdings Value', code:"pull_from_yahoo('v1')")
 match_phrases_to_intent(['Holdings Value'], intent)
 
-# Low Limit
+# Low Limit (doesnt work)
 intent = Intent.create(name: 'Low Limit', code:"pull_from_yahoo('l3')")
 match_phrases_to_intent(['Low limit'], intent)
 
@@ -243,7 +239,7 @@ match_phrases_to_intent(['Enterprise Value/Revenue', 'EV/R', 'Enterprise Value R
 
 # Enterprise Value/EBITDA
 intent = Intent.create(name: 'Enterprise Value/EBITDA', code: "yahoo_key_stats('enterprise value/ebitda')")
-match_phrases_to_intent(['Enterprise Value/EBITDA', 'Enterprise Value over EBITDA'], intent)
+match_phrases_to_intent(['Enterprise Value/EBITDA', 'Enterprise Value over EBITDA', 'EV/EBITDA'], intent)
 
 # Fiscal year ends
 intent = Intent.create(name: 'Fiscal year ends', code: "yahoo_key_stats('fiscal year ends')")
