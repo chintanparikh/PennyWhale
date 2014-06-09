@@ -1,14 +1,12 @@
 = render 'navbar'
 .container.fill#execute-container
   = render 'search_form'
-  = render 'app/queries/components/errors'
-  - if flash[:warning].nil? and flash[:danger].nil?
-    .col-lg-2
-    .col-lg-8.fill.panel.panel-default#query-answer-panel
-      .panel-body
-        = render 'app/queries/components/main'
-        %hr
-        = render 'app/queries/components/graph'
-        %hr
-        = render 'app/queries/components/news'
-    .col-lg-2
+  .col-lg-2
+  .col-lg-8.fill.panel.panel-default#query-answer-panel
+    .panel-body
+      = render 'app/queries/components/main'
+      %hr
+      = render 'app/queries/components/graph'
+      %hr
+      = render 'app/queries/components/news'
+  .col-lg-2
