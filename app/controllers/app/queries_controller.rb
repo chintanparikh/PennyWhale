@@ -50,4 +50,7 @@ class App::QueriesController < App::BaseController
 		end
 	end
 
+	def help
+	end
+
 end

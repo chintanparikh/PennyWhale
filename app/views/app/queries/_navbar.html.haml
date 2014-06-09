@@ -1,10 +1,13 @@
-.container
-  .row{style:"margin-top:40px"}
+.container{style:"margin-top:40px"}
+  .row
     .col-lg-1
-    .col-lg-7
+    .col-lg-8
       %h4
         %img{src: "http://www.pennywhale.com/img/nav-logo.png"}
         Penny
         %span{style:"color:#4EC4F2;margin-left:-3px"}
           Whale
-    .col-lg-1
+    .col-lg-1{style:"margin-top:20px"}
+      = link_to "Help", app_queries_help_path
+    .col-lg-1{style:"margin-top:20px"}
+      %a{href: "#"} Login
