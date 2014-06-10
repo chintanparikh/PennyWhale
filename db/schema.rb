@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20140610173838) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_mask"
     t.string   "role",                   default: "regular"
     t.integer  "last_4_digits"
     t.string   "customer_id"
