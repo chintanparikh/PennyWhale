@@ -15,16 +15,11 @@ end
 
 # After Hours Price
 intent = Intent.create(name: 'After Hours Price', code: "pull_from_yahoo('c8')")
-match_phrases_to_intent(['After hours', 'After hours price', 'After hours change'], intent)
-
-# Annualized Gains
-intent = Intent.create(name: 'Annualized Gains', code:"pull_from_yahoo('g3')")
-match_phrases_to_intent(['Annualized Gain', 'Annualized Gains'], intent)
+match_phrases_to_intent(['After Hours', 'After Hours Price', 'After Hours Change'], intent)
 
 # Ask (and realtime)
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Ask', 'Ask Price'], intent)
+intent = Intent.create(name: 'Ask', code: 'realtime_pull_from_yahoo("b2", "a0")')
+match_phrases_to_intent(['Ask', 'Ask Price', 'Price'], intent)
 
 # Ask Size
 intent = Intent.create(name: 'Ask Size', code:"pull_from_yahoo('a5')")
@@ -32,442 +27,367 @@ match_phrases_to_intent(['Ask Size'], intent)
 
 # Average Daily Volume
 intent = Intent.create(name: 'Average Daily Volume', code:"pull_from_yahoo('a2')")
-match_phrases_to_intent(['Average volume', 'Average daily volume'], intent)
+match_phrases_to_intent(['Average Volume', 'Average Daily Volume'], intent)
 
 # Bid
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Bid', 'Bid price'], intent)
+intent = Intent.create(name: 'Bid', code: 'realtime_pull_from_yahoo("b3", "b0")')
+match_phrases_to_intent(['Bid', 'Bid Price'], intent)
 
 # Bid size
-intent = Intent.create(name: 'Bid	Size', code:"pull_from_yahoo('b6')")
-match_phrases_to_intent(['Bid size'], intent)
+intent = Intent.create(name: 'Bid Size', code:"pull_from_yahoo('b6')")
+match_phrases_to_intent(['Bid Size'], intent)
 
 # Book Value per Share
 intent = Intent.create(name: 'Book Value per Share', code:"pull_from_yahoo('b4')")
-match_phrases_to_intent(['Book Value per Share', 'Book Value', 'bv/s', 'bs'], intent)
+match_phrases_to_intent(['Book Value per Share', 'Book Value', 'BV/S'], intent)
 
 # Change + %
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['change', 'change in price', 'price change', 'change since open', 'change in percent'], intent)
+intent = Intent.create(name: 'Price change', code: "pull_from_yahoo('c0')")
+match_phrases_to_intent(['Change', 'Change in Price', 'Price Change', 'Change since Open', 'Change in Percent'], intent)
 
 # Change from Fifty Day Moving Average + %
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['change from fifty day moving average', 'change from fifty day average', 'change from 50 day moving average', 'change from 50 day average'], intent)
+intent = Intent.create(name: 'Change from Fifty Day Moving Average', code: "percent_change_yahoo('m7','m8')")
+match_phrases_to_intent(['Change from Fifty day Moving Average', 'Change from Fifty Day Average', 'Change from 50 Day Moving Average', 'Change from 50 Day Average'], intent)
 
 # Change from 200 Day Moving Average + %
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['change from two hundred day moving average', 'change from two hundred day average', 'change from 200 day moving average', 'change from 200 day average'], intent)
+intent = Intent.create(name: 'Change from Two Hundred Day Moving Average', code: "percent_change_yahoo('m5', 'm6')")
+match_phrases_to_intent(['Change from Two Hundred Day Moving Average', 'Change from Two Hundred Day Average', 'Change from 200 Day Moving Average', 'Change from 200 Day Average'], intent)
 
 # Change from year high + %
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['change from year high'], intent)
+intent = Intent.create(name: 'Change from Year High', code: "percent_change_yahoo('k4','k5')")
+match_phrases_to_intent(['Change from Year High'], intent)
 
 # Commission
 intent = Intent.create(name: 'Commission', code:"pull_from_yahoo('c3')")
-match_phrases_to_intent(['commission'], intent)
+match_phrases_to_intent(['Commission'], intent)
 
 # Currency
 intent = Intent.create(name: 'Currency', code:"pull_from_yahoo('c4')")
-match_phrases_to_intent(['currency'], intent)
+match_phrases_to_intent(['Currency'], intent)
 
 # Days High
 intent = Intent.create(name: 'Days High', code:"pull_from_yahoo('h0')")
-match_phrases_to_intent(["Day's high", "days high", "price high", "highest price in the last day", 'highest price in day', 'todays high'], intent)
+match_phrases_to_intent(["Day's High", "Days High", "Price High", "Highest Price in the Last Day", 'Highest Price in Day', 'Todays High'], intent)
 
 # Days Low
 intent = Intent.create(name: 'Days Low', code:"pull_from_yahoo('g0')")
-match_phrases_to_intent(["Day's low", "days low", "price low", "lowest price in the last day", 'lowest price in day', 'todays low'], intent)
+match_phrases_to_intent(["Day's Low", "Days Low", "Price Row", "Lowest Price in the Last Day", 'Lowest Price in Day', 'Todays Low'], intent)
 
 # Days Range + realtime
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(["day's range", 'days range', 'range', 'todays range'], intent)
+intent = Intent.create(name: 'Days Range', code: 'pull_from_yahoo("m0")')
+match_phrases_to_intent(["Day's Range", 'Days Range', 'Range', 'Todays Range'], intent)
 
-# Days Value Change
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(["day's value change", "days value change", 'value cahnge today', 'todays value change'], intent)
+# Days Value Change + realtime
+intent = Intent.create(name: 'Days Value Change', code: 'pull_from_yahoo("w1")')
+match_phrases_to_intent(["Day's Value Change", "Days Value Change", 'Value Change Today', 'Todays Value Change'], intent)
 
 # Dividend pay date
 intent = Intent.create(name: 'Dividend Pay Date', code:"pull_from_yahoo('r1')")
-match_phrases_to_intent(['dividend pay date', 'dividend date'], intent)
+match_phrases_to_intent(['Dividend Pay Date', 'Dividend Date'], intent)
 
 # Trailing Annual Dividend Yield + %
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['trailing annual dividend yield', 'trailing annual dividend yield percent', 'trailing annual dividend yield percentage'], intent)
+intent = Intent.create(name: 'Trailing Annual Dividend Yield', code: "percent_change_yahoo('d0','y0')")
+match_phrases_to_intent(['Trailing Annual Dividend Yield', 'Trailing Annual Dividend Yield Percent', 'Trailing Annual Dividend Yield Percentage'], intent)
 
 # Diluted EPS
 intent = Intent.create(name: 'Diluted EPS', code:"pull_from_yahoo('e0')")
-match_phrases_to_intent(['diluted eps', 'eps', 'earnings per share', 'diluted earnings per share'], intent)
+match_phrases_to_intent(['Diluted EPS', 'EPS', 'Earnings per Share', 'Diluted Earnings per Share'], intent)
 
 # EBITDA
 intent = Intent.create(name: 'EBITDA', code:"pull_from_yahoo('j4')")
-match_phrases_to_intent(['EBITDA', 'earnings'], intent)
+match_phrases_to_intent(['EBITDA', 'Earnings'], intent)
 
 # EPS Estimate Current Year
 intent = Intent.create(name: 'EPS Estimate Current Year', code:"pull_from_yahoo('e7')")
-match_phrases_to_intent(['eps estimate this year', 'eps estimate current year'], intent)
+match_phrases_to_intent(['EPS Estimate this Year', 'EPS Estimate Current Year', 'EPS Estimate for this Year'], intent)
 
 # EPS Estimate Next Quarter
 intent = Intent.create(name: 'EPS Estimate Next Quarter', code:"pull_from_yahoo('e9')")
-match_phrases_to_intent(['eps estimate next quarter', 'eps estimate'], intent)
+match_phrases_to_intent(['EPS Estimate Next Quarter', 'EPS Estimate'], intent)
 
 # EPS Estimate Next Year
 intent = Intent.create(name: 'EPS Estimate Next Year', code:"pull_from_yahoo('e8')")
-match_phrases_to_intent(['eps estimate next year'], intent)
+match_phrases_to_intent(['EPS Estimate Next Year'], intent)
 
 # Ex Dividend Date
 intent = Intent.create(name: 'Ex Dividend Date', code:"pull_from_yahoo('q0')")
-match_phrases_to_intent(['ex dividend Date'], intent)
+match_phrases_to_intent(['EX Dividend Date'], intent)
 
 # 50 Day Moving Average
 intent = Intent.create(name: '50 Day Moving Average', code:"pull_from_yahoo('m3')")
-match_phrases_to_intent(['fifty day moving average', '50 day moving average', 'average', 'price average', 'average price'], intent)
+match_phrases_to_intent(['Fifty Day Moving Average', '50 Day Moving Average', 'Price average', 'Average price'], intent)
 
 # Shares Float
 intent = Intent.create(name: 'Shares Float', code:"pull_from_yahoo('f6')")
-match_phrases_to_intent(['shares float', 'float'], intent)
-
-# High Limit
-intent = Intent.create(name: 'High Limit', code:"pull_from_yahoo('l2')")
-match_phrases_to_intent(['high limit'], intent)
+match_phrases_to_intent(['Shares Float', 'Float'], intent)
 
 # Holdings Gain + %
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['holdings gain', 'gain from holdings', 'holdings gain percentage', 'percentage holdings gain'], intent)
-
-# Holdings Value
-intent = Intent.create(name: 'Holdings Value', code:"pull_from_yahoo('v1')")
-match_phrases_to_intent(['holdings value'], intent)
-
-# Low Limit
-intent = Intent.create(name: 'Low Limit', code:"pull_from_yahoo('l3')")
-match_phrases_to_intent(['low limit'], intent)
+intent = Intent.create(name: 'Holdings Gain', code: "percent_change_yahoo('g4','g1')")
+match_phrases_to_intent(['Holdings Gain', 'Gain from Holdings', 'Holdings Gain Percentage', 'Percentage Holdings Gain'], intent)
 
 # Market Capitalization
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['market cap', 'market Capitalization'], intent)
+intent = Intent.create(name: 'Market Capitalization', code: 'pull_from_yahoo("j1")')
+match_phrases_to_intent(['Market Cap', 'Market Capitalization'], intent)
 
 # Name
 intent = Intent.create(name: 'Name', code:"pull_from_yahoo('n0')")
-match_phrases_to_intent(['name'], intent)
+match_phrases_to_intent(['Name'], intent)
 
 # One Year Target Price
 intent = Intent.create(name: 'One Year Target Price', code:"pull_from_yahoo('t8')")
-match_phrases_to_intent(['One year target price', 'target price for one year', 'target price'], intent)
+match_phrases_to_intent(['One Year Target Price', 'Target Price for One Year', 'Target Price'], intent)
 
 # Open
 intent = Intent.create(name: 'Open', code:"pull_from_yahoo('a0')")
-match_phrases_to_intent(['open'], intent)
+match_phrases_to_intent(['Open'], intent)
 
 # PEG Ratio
 intent = Intent.create(name: 'PEG Ratio', code:"pull_from_yahoo('r5')")
-match_phrases_to_intent(['PEG', 'peg ratio', 'p/eg ratio', 'p/eg', 'price to earnings growth', 'price to earnings growth ratio'], intent)
+match_phrases_to_intent(['PEG', 'PEG ratio', 'P/EG ratio', 'P/EG', 'Price to Earnings Growth', 'Price to Earnings Growth Ratio'], intent)
 
 # PE Ratio
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['PE', 'p/e', 'PE Ratio', 'P/E ratio', 'price to earnings ratio', 'price to earnings'], intent)
+intent = Intent.create(name: 'PE Ratio', code: 'pull_from_yahoo("r0")')
+match_phrases_to_intent(['PE', 'P/E', 'PE Ratio', 'P/E ratio', 'Price to Earnings Ratio', 'Price to Earnings'], intent)
 
 # Previous Close
 intent = Intent.create(name: 'Previous Close', code:"pull_from_yahoo('p0')")
-match_phrases_to_intent(['previous close'], intent)
+match_phrases_to_intent(['Previous close'], intent)
 
 # Price book
 intent = Intent.create(name: 'Price Book', code:"pull_from_yahoo('p6')")
-match_phrases_to_intent(['price book'], intent)
+match_phrases_to_intent(['Price Book'], intent)
 
 # Price over EPS estimate for current year
 intent = Intent.create(name: 'Price/EPS estimate for current year', code:"pull_from_yahoo('r6')")
-match_phrases_to_intent(['price over eps estimate for current year'], intent)
+match_phrases_to_intent(['Price Over EPS Estimate for Current Year'], intent)
 
 # Price over EPS estimate for next year
 intent = Intent.create(name: 'Price/EPS estimate for next year', code:"pull_from_yahoo('r7')")
-match_phrases_to_intent(['price over eps estimate for next year'], intent)
+match_phrases_to_intent(['Price Over EPS Estimate for Next Year'], intent)
 
 # Revenue
 intent = Intent.create(name: 'Revenue', code:"pull_from_yahoo('s6')")
-match_phrases_to_intent(['revenue'], intent)
+match_phrases_to_intent(['Revenue'], intent)
 
 # Shares Owned
 intent = Intent.create(name: 'Shares Owned', code:"pull_from_yahoo('s1')")
-match_phrases_to_intent(['shares owned', 'shares retention'], intent)
+match_phrases_to_intent(['Shares Owned', 'Shares Retention', 'Shares Retained'], intent)
 
 # Shares Outstanding
 intent = Intent.create(name: 'Shares Outstanding', code:"pull_from_yahoo('j2')")
-match_phrases_to_intent(['shares outstanding'], intent)
+match_phrases_to_intent(['Shares Outstanding'], intent)
 
 # Short Ratio
 intent = Intent.create(name: 'Short Ratio', code:"pull_from_yahoo('s7')")
-match_phrases_to_intent(['short ratio'], intent)
+match_phrases_to_intent(['Short Ratio'], intent)
 
 # 200 Day Moving Average
 intent = Intent.create(name: '200 Day Moving Average', code:"pull_from_yahoo('m4')")
-match_phrases_to_intent(['two hundred day moving average', '200 day moving average', '200 day average', 'two hundred day average', '200 day price average'], intent)
+match_phrases_to_intent(['Two Hundred Day Moving Average', '200 Day Moving Average', '200 Day Average', 'Two Hundred Day Average', '200 Day Price Average'], intent)
 
 # Volume
 intent = Intent.create(name: 'Volume', code:"pull_from_yahoo('v0')")
-match_phrases_to_intent(['volume'], intent)
+match_phrases_to_intent(['Volume'], intent)
 
 # Year High
 intent = Intent.create(name: 'Year High', code:"pull_from_yahoo('k0')")
-match_phrases_to_intent(['year high', '52 week high'], intent)
+match_phrases_to_intent(['Year High', '52 Week High'], intent)
 
 # Year Low
 intent = Intent.create(name: 'Year Low', code:"pull_from_yahoo('j0')")
-match_phrases_to_intent(['year low', '52 week low'], intent)
+match_phrases_to_intent(['Year Low', '52 Week Low'], intent)
 
 # Year range
 intent = Intent.create(name: 'Year range', code:"pull_from_yahoo('w0')")
-match_phrases_to_intent(['year range', 'years range'], intent)
+match_phrases_to_intent(['Year Range', 'Years Range'], intent)
 
 # Enterprise Value
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['enterprise value', 'value', 'valuation'], intent)
+intent = Intent.create(name: 'Enterprise Value', code: "yahoo_key_stats('enterprise value')")
+match_phrases_to_intent(['Enterprise Value', 'Value', 'Valuation'], intent)
 
 # Trailing P/E
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Trailing PE', 'trailing p/e', 'Trailing PE Ratio', 'Trailing P/E ratio', 'trailing price to earnings ratio', 'trailing price to earnings'], intent)
+intent = Intent.create(name: 'Trailing P/E', code: "yahoo_key_stats('trailing p/e')")
+match_phrases_to_intent(['Trailing PE', 'Trailing P/E', 'Trailing PE Ratio', 'Trailing P/E ratio', 'Trailing Price to Earnings Ratio', 'Trailing Price to Earnings'], intent)
 
 # Forward P/E
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Forward PE', 'forward p/e', 'Forward PE Ratio', 'Forward P/E ratio', 'forward price to earnings ratio', 'forward price to earnings'], intent)
+intent = Intent.create(name: 'Forward P/E', code: "yahoo_key_stats('forward p/e')")
+match_phrases_to_intent(['Forward PE', 'Forward P/E', 'Forward PE Ratio', 'Forward P/E Ratio', 'Forward Price to Earnings Ratio', 'Forward Price to Earnings'], intent)
 
 # Price/Sales
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Price/Sales', 'Price/Sales ratio', 'PS ratio', 'ps', 'p/s', 'p/s ratio', 'price sales', 'price sales ratio'], intent)
+intent = Intent.create(name: 'Price/Sales', code: "yahoo_key_stats('price/sales')")
+match_phrases_to_intent(['Price/Sales', 'Price/Sales Ratio', 'PS Ratio','P/S', 'P/S ratio', 'Price Sales', 'Price Sales Ratio', 'Price to Sales Ratio', 'Price to Sales'], intent)
 
 # Price/Book
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Price/Book', 'Price/Book ratio', 'PB ratio', 'pb', 'p/b', 'p/b ratio', 'price book', 'price book ratio'], intent)
+intent = Intent.create(name: 'Price/Book', code: "yahoo_key_stats('price/book')")
+match_phrases_to_intent(['Price/Book', 'Price/Book Ratio', 'PB Ratio', 'PB', 'P/B', 'P/B ratio', 'Price Book', 'Price Book Ratio', 'Price to Book Ratio'], intent)
 
 # Enterprise Value/Revenue
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Enterprise Value/Revenue', 'ev/r', 'enterprise value revenue', 'evr ratio', 'evr', 'enterprise value over revenue'], intent)
+intent = Intent.create(name: 'Enterprise Value/Revenue', code: "yahoo_key_stats('enterprise value/revenue')")
+match_phrases_to_intent(['Enterprise Value/Revenue', 'EV/R', 'Enterprise Value Revenue', 'EVR Ratio', 'EVR', 'Enterprise Value over Revenue'], intent)
 
 # Enterprise Value/EBITDA
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Enterprise Value/EBITDA', 'Enterprise Value over EBITDA'], intent)
+intent = Intent.create(name: 'Enterprise Value/EBITDA', code: "yahoo_key_stats('enterprise value/ebitda')")
+match_phrases_to_intent(['Enterprise Value/EBITDA', 'Enterprise Value over EBITDA', 'EV/EBITDA'], intent)
 
 # Fiscal year ends
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Fiscal year ends', 'end of fiscal year'], intent)
+intent = Intent.create(name: 'Fiscal year ends', code: "yahoo_key_stats('fiscal year ends')")
+match_phrases_to_intent(['Fiscal Year Ends', 'End of Fiscal Year'], intent)
 
 # Most recent quarter
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Most recent quarter'], intent)
+intent = Intent.create(name: 'Most recent quarter', code: "yahoo_key_stats('most recent quarter')")
+match_phrases_to_intent(['Most Recent Quarter'], intent)
 
 # Profit margin
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Profit margin'], intent)
+intent = Intent.create(name: 'Profit Margin', code: "yahoo_key_stats('profit margin')")
+match_phrases_to_intent(['Profit Margin'], intent)
 
 # Operating margin
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['operating margin'], intent)
+intent = Intent.create(name: 'Operating margin', code: "yahoo_key_stats('operating margin')")
+match_phrases_to_intent(['Operating Margin'], intent)
 
 # Return on assets
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['return on assets', 'roa'], intent)
+intent = Intent.create(name: 'Return on assets', code: "yahoo_key_stats('return on assets')")
+match_phrases_to_intent(['Return on Assets', 'ROA'], intent)
 
 # Return on equity
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['return on equity', 'roe'], intent)
+intent = Intent.create(name: 'Return on equity', code: "yahoo_key_stats('return on equity')")
+match_phrases_to_intent(['Return on Equity', 'ROE'], intent)
 
 # Revenue per share
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['revenue per share', 'rs', 'r/s', 'rs ratio', 'r/s ratio', 'revenue/share'], intent)
+intent = Intent.create(name: 'Revenue per Share', code: "yahoo_key_stats('revenue per share')")
+match_phrases_to_intent(['Revenue per Share', 'R/S', 'RS Ratio', 'R/S Ratio', 'Revenue/Share'], intent)
 
 # Quarterly revenue growth
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['quarterly revenue growth', 'revenue growth for last quarter', 'revenue growth over last quarter'], intent)
+intent = Intent.create(name: 'Quarterly Revenue Growth', code: "yahoo_key_stats('qtrly revenue growth')")
+match_phrases_to_intent(['Quarterly Revenue Growth', 'Revenue Growth for Last Quarter', 'Revenue Growth over Last Quarter'], intent)
 
 # Gross profit
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['gross profit'], intent)
+intent = Intent.create(name: 'Gross profit', code: "yahoo_key_stats('gross profit')")
+match_phrases_to_intent(['Gross profit'], intent)
 
 # Net income available to common
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['net income available to common'], intent)
+intent = Intent.create(name: 'Net income available to common', code: "yahoo_key_stats('net income avl to common')")
+match_phrases_to_intent(['Net Income Available to Common', 'Net Income'], intent)
 
 # Quarterly earnings growth
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['quarterly earnings growth', 'earnings growth for last quarter', 'earnings growth over last quarter'], intent)
+intent = Intent.create(name: 'Quarterly earnings growth', code: "yahoo_key_stats('qtrly earnings growth')")
+match_phrases_to_intent(['Quarterly Earnings Growth', 'Earnings Growth for Last Quarter', 'Earnings Growth over Last Quarter'], intent)
 
 # Total cash
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['total cash', 'cash'], intent)
+intent = Intent.create(name: 'Total cash', code: "yahoo_key_stats('total cash')")
+match_phrases_to_intent(['Total Cash', 'Cash'], intent)
 
 # Total cash per share
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['total cash per share', 'cash per share', 'total cash/share', 'cash/share', 'tcs', 'tc/s'], intent)
+intent = Intent.create(name: 'Total cash per share', code: "yahoo_key_stats('total cash per share')")
+match_phrases_to_intent(['Total Cash per Share', 'Cash per Share', 'Total Cash/Share', 'Cash/Share', 'TC/S'], intent)
 
 # Total debt
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['total debt', 'debt'], intent)
+intent = Intent.create(name: 'Total debt', code: "yahoo_key_stats('total debt')")
+match_phrases_to_intent(['Total Debt', 'Debt'], intent)
 
 # Total debt/equity
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['total debt/equity', 'debt/equity', 'tbe', 'tb/e'], intent)
+intent = Intent.create(name: 'Total debt/equity', code: "yahoo_key_stats('total debt/equity')")
+match_phrases_to_intent(['Total Debt/Equity', 'Debt/Equity'], intent)
 
 # Current ratio
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['current ratio', 'ratio'], intent)
+intent = Intent.create(name: 'Current ratio', code: "yahoo_key_stats('current ratio')")
+match_phrases_to_intent(['Current Ratio', 'Ratio'], intent)
 
 # Operating Cash Flow
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['operating cash flow', 'cash flow'], intent)
+intent = Intent.create(name: 'Operating cash flow', code: "yahoo_key_stats('operating cash flow')")
+match_phrases_to_intent(['Operating Cash Flow', 'Cash Flow'], intent)
 
 # Levered Free Cash Flow
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['levered free cash flow', 'free cash flow'], intent)
+intent = Intent.create(name: 'Levered Free Cash Flow', code: "yahoo_key_stats('levered free cash flow')")
+match_phrases_to_intent(['Levered Free Cash Flow', 'Free Cash Flow'], intent)
 
 # Beta
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['beta', 'risk'], intent)
+intent = Intent.create(name: 'Beta', code: "yahoo_key_stats('beta')")
+match_phrases_to_intent(['Beta', 'Risk'], intent)
 
 # 52 week change
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['52 week change', 'year change'], intent)
+intent = Intent.create(name: '52 week change', code: "yahoo_key_stats('52-week change')")
+match_phrases_to_intent(['52 Week Change', 'Year Change'], intent)
 
 # s&p 52 week change
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['S&P500 52 week change', 'S&P500 year change'], intent)
+intent = Intent.create(name: 'S&P 52 week change', code: "yahoo_key_stats('s&p500 52-week change')")
+match_phrases_to_intent(['S&P500 52 Week Change', 'S&P500 Year Change'], intent)
 
 # 3 month average volume
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Average 3 month volume', '3 month volume', 'Average three month volume', 'three month volume'], intent)
+intent = Intent.create(name: '3 month average volume', code: "yahoo_key_stats('avg vol')")
+match_phrases_to_intent(['Average 3 Month Volume', '3 Month Volume', 'Average Three Month Volume', 'Three Month Volume'], intent)
 
 # 10 day average volume
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['Average 10 day volume', '10 day volume', 'Average ten day volume', 'ten day volume'], intent)
+intent = Intent.create(name: '10 day average volume', code: "yahoo_key_stats('avg vol')")
+match_phrases_to_intent(['Average 10 Day Volume', '10 Day Volume', 'Average Ten Day Volume', 'Ten Day Volume'], intent)
 
 # Shares Outstanding
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['shares outstanding', 'outstanding shares'], intent)
+intent = Intent.create(name: 'Shares outstanding', code: "yahoo_key_stats('shares outstanding')")
+match_phrases_to_intent(['Shares Outstanding', 'Outstanding Shares'], intent)
 
 # % held by insiders
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['percent held by insiders', 'percentage held by insiders'], intent)
+intent = Intent.create(name: '% held by insiders', code: "yahoo_key_stats('% held by insiders')")
+match_phrases_to_intent(['Percent Held by Insiders', 'Percentage Held by Insiders'], intent)
 
 # % held by institutions
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['percent held by institutions', 'percentage held by institutions'], intent)
-
-# Shares short
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['shares short'], intent)
+intent = Intent.create(name: '% held by institutions', code: "yahoo_key_stats('% held by institutions')")
+match_phrases_to_intent(['Percent Held by Institutions', 'Percentage Held by Institutions'], intent)
 
 # Short ratio
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['short ratio', 'short'], intent)
+intent = Intent.create(name: 'Short ratio', code: "yahoo_key_stats('short ratio')")
+match_phrases_to_intent(['Short Ratio', 'short'], intent)
 
 # Short % of float
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['short percent of float', 'short percentage of float'], intent)
+intent = Intent.create(name: 'Short % of float', code: "yahoo_key_stats('shorts % of float')")
+match_phrases_to_intent(['Short Percent of Float', 'Short Percentage of Float'], intent)
 
 # Shares short
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['shares short past month', 'past month shares short',' shares short last month', 'last month shares short', 'shares short previous month', 'previous month shares short'], intent)
+intent = Intent.create(name: 'Shares short', code: "yahoo_key_stats('shares short')")
+match_phrases_to_intent(['Shares Short', 'Shares Short Past Month', 'Past Month Shares Short','Shares Short Last Month', 'Last Month Shares Short', 'Shares Short Previous Month', 'Previous Month Shares Short'], intent)
 
 # Forward annual dividend rate
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['forward annual dividend rate'], intent)
+intent = Intent.create(name: 'Forward annual dividend rate', code: "yahoo_key_stats('forward annual dividend rate')")
+match_phrases_to_intent(['Forward Annual Dividend Rate'], intent)
 
 # Forward annual dividend yield
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['forward annual dividend yield', 'forward annual dividend'], intent)
+intent = Intent.create(name: 'Forward annual dividend yield', code: "yahoo_key_stats('forward annual dividend yield')")
+match_phrases_to_intent(['Forward Annual Dividend Yield', 'Forward Annual Dividend'], intent)
 
 # Trailing annual dividend rate
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['trailing annual dividend rate'], intent)
+intent = Intent.create(name: 'Trailing annual dividend rate', code: "yahoo_key_stats('trailing annual dividend rate')")
+match_phrases_to_intent(['Trailing Annual Dividend Rate'], intent)
 
 # Trailing annual dividend yield
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['trailing annual dividend yield', 'trailing annual dividend'], intent)
+intent = Intent.create(name: 'Trailing annual dividend yield', code: "yahoo_key_stats('trailing annual dividend yield')")
+match_phrases_to_intent(['Trailing Annual Dividend Yield', 'Trailing Annual Dividend'], intent)
 
 # 5 year average dividend yield
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['5 year average dividend yield', 'five year average dividend yield', '5 year dividend yield', 'five year divident yield'], intent)
+intent = Intent.create(name: '5 year average dividend yield', code: "yahoo_key_stats('5 year average dividend yield')")
+match_phrases_to_intent(['5 Year Average Dividend Yield', 'Five Year Average Dividend Yield', '5 Year Dividend Yield', 'Five Year Dividend Yield'], intent)
 
 # Payout ratio
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['payout ratio'], intent)
+intent = Intent.create(name: 'Payout ratio', code: "yahoo_key_stats('payout ratio')")
+match_phrases_to_intent(['Payout Ratio'], intent)
 
 # Last Split Factor
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['last split factor', 'last split'], intent)
+intent = Intent.create(name: 'Last Split Factor', code: "yahoo_key_stats('last split factor')")
+match_phrases_to_intent(['Last Split Factor', 'Last Split'], intent)
 
 # Last Split Date
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['last split date'], intent)
+intent = Intent.create(name: 'Last Split Date', code: "yahoo_key_stats('last split date')")
+match_phrases_to_intent(['Last Split Date'], intent)
 
-# Both Holdings
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['holdings', '13f holdings', 'insider and institutional holdings', '13f', '13f forms'], intent)
+# # Both Holdings
+# intent = Intent.create(name: 'Both Holdings', code: "yahoo_key_stats('both holdings')")
+# match_phrases_to_intent(['holdings', '13f holdings', 'insider and institutional holdings', '13f', '13f forms'], intent)
 
 # Insider holdings
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
+# intent = Intent.create(name: 'Insider holdings', code: "")
+# match_phrases_to_intent(['insider holdings', '13f insider holdings', '13f insider'], intent)
 
 # Institutional Holdings
-# TODO
-Intent.create(name: '', code: '')
-match_phrases_to_intent(['institutional holdings', '13f institutional holdings', '13f institutional'], intent)
+intent = Intent.create(name: 'Institutional Holdings', code: 'dataroma_holdings')
+match_phrases_to_intent(['Institutional Holdings', '13F Institutional Holdings', '13F Institutional', 'Holdings'], intent)
 
 
 

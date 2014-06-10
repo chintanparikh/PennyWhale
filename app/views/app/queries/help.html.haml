@@ -1,0 +1,86 @@
+= render 'navbar'
+
+.container
+  .row
+    .col-lg-3
+    .col-lg-6
+      %h2 FAQ's
+      %br
+      .list-group
+        %a.list-group-item{href: "#"}
+          %h4.list-group-item-heading How do I search for data?
+          %p.list-group-item-text Structure your query like a natural question. Tag the security with a '$'. ex. 'What's the PE Ratio for $AAPL?'
+        %a.list-group-item{href: "#"}
+          %h4.list-group-item-heading How do I search for multiple securities?
+          %p.list-group-item-text Just keep adding them to your search. ex. 'Show me the revenue for $AAPL and $TSLA and $GOOG'
+        %a.list-group-item{href: "#"}
+          %h4.list-group-item-heading What data can I search for?
+          %p.list-group-item-text
+            %ul
+              - @intents.each do |intent|
+                %li
+                  = intent
+                
+        %a.list-group-item{href: "#"}
+          %h4.list-group-item-heading Which funds do you have holdings data for?
+          %p.list-group-item-text 
+            %ul
+              %li Alex Roepers - Atlantic Investment Management ($AIM)
+              %li Allan Mecham - Arlington Value Capital ($AV)
+              %li Arnold Van Den Berg - Century Management Advisers ($CMAFX)
+              %li Bill Ackman - Pershing Square Capital Management ($PSC)
+              %li Bill Nasgovitz - Heartland Select Value ($HRSVX)
+              %li Bill Nygren - Oakmark Select ($OAKLX)
+              %li Bruce Berkowitz - Fairholme Fund ($FAIRX) 
+              %li Charles Bobrinskoy - Ariel Focus ($ARFFX)
+              %li Charlie Munger - Daily Journal Corp. ($DJCO)
+              %li Christopher Davis - Clipper ($CFIMX)
+              %li Chuck Akre - Akre Capital Management ($AC) 
+              %li Daniel Loeb - Third Point ($TP)
+              %li David Einhorn - Greenlight Capital ($GLRE) 
+              %li David Katz - Matrix Advisors Value ($MAVFX)
+              %li David Rolfe - Wedgewood Partners ($WP)
+              %li David Tepper - Appaloosa Management ($AM)
+              %li David Winters - Wintergreen Advisers ($WA) 
+              %li Dodge & Cox Team - Dodge & Cox ($DODGX)
+              %li Donald Yacktman - Yacktman Focused Fund ($YAFFX)
+              %li Eddie Lampert - RBS Partners ($EL)
+              %li Glenn Greenberg - Brave Warrior Advisors ($CCM)
+              %li Harry Burn - Sound Shore ($SSHFX)
+              %li Ian Cumming - Leucadia National ($LUK)
+              %li Irving Kahn - Kahn Brothers Group ($KB)
+              %li Jean-Marie Eveillard - First Eagle U.S. Value ($FEVAX)
+              %li Jeffrey Ubben - ValueAct Capital ($VA)
+              %li John Rogers - Ariel Appreciation ($CAAPX)
+              %li Lou Simpson - SQ Advisors ($SQ)
+              %li Mark Hillman - Hillman Focused ($HCMAX)
+              %li Mason Hawkins - Longleaf Partners ($LLPFX)
+              %li Meridian Funds - Meridian Contrarian Fund ($MVALX)
+              %li Michael Larson - Bill & Melinda Gates Foundation Trust ($GFT)  
+              %li Michael Price - MFP Investors ($MFP)
+              %li Mohnish Pabrai - Pabrai Investments ($PI)
+              %li Prem Watsa - Fairfax Financial Holdings ($FFH)
+              %li Richard Pzena - Hancock Classic Value ($PZFVX)
+              %li Robert Goldfarb, David Poppe - Sequoia ($SEQUX)  
+              %li Robert Olstein - Olstein Value ($OFALX)
+              %li Robert Rodriguez - FPA Capital ($FPPTX)
+              %li Robert Torray - Torray ($TORYX)
+              %li Robert Zagunis - Jensen ($JENSX)
+              %li Ronald Muhlenkamp - Muhlenkamp ($MUHLX) 
+              %li Sam Peters - ClearBridge Value Trust ($LMVTX) 
+              %li Seth Klarman - Baupost Group ($BAUPOST)
+              %li Stephen Mandel - Lone Pine Capital ($LPC) 
+              %li Steven Romick - FPA Crescent Fund ($FPACX)
+              %li Thomas Gayner - Markel Asset Management ($MKL)
+              %li Thomas Russo - Gardner Russo & Gardner ($GR) 
+              %li Tweedy Browne Team - Tweedy Browne Value ($TWEBX)
+              %li Wallace Weitz - Weitz Value ($WVALX)
+              %li Warren Buffett - Berkshire Hathaway ($BRK)
+              %li Whitney Tilson - T2 Partners Management ($T2)
+              %li William Frels - Mairs & Power Growth ($MPGFX) 
+              %li William Fries, Connor Browne - Thornburg Value ($TVAFX)
+              %li William Von Mueffling - Cantillon Capital Management ($CC)    
+        %a.list-group-item{href: "mailto:hello@pennywhale.com"}    
+          %h4.list-group-item-heading Don't see your question here?
+          %p.list-group-item-text Click here to email us                   
+    .col-lg-3

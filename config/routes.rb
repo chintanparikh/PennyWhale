@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root 'home#index'
 
   namespace :app do
     root 'queries#index'
     get  'queries/index', to: 'queries#index', as: :queries_index
     get 'queries/execute', to: 'queries#execute', as: :queries_execute
+    get 'queries/help', to: 'queries#help', as: :queries_help
     get 'queries/autocomplete', to: 'queries#autocomplete', as: :queries_autocomplete 
   end
 

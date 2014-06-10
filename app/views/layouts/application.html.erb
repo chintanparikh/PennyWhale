@@ -2,14 +2,24 @@
 <html>
 <head>
   <title>PennyWhale</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Montserrat:400,700', media: 'all'%>
+  <%= javascript_include_tag 'application'%>
   <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="<%= controller_name %>", class="<%= action_name %>">
 
 <%= yield %>
 
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//v2.zopim.com/?2Be1lfPNeU2qzSfTCzRF1WO2fZzur67J';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
 </body>
 </html>

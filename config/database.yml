@@ -31,5 +31,11 @@ staging:
   port: 5432
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: d1ans3j3g20np4
+  username: noghgwhmjtowcb
+  password: AwxGkUw2fz-M5lMF8oWjj950Y8
+  host: ec2-54-243-47-196.compute-1.amazonaws.com
+  port: 5432

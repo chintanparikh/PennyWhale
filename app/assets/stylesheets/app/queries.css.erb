@@ -1,3 +1,7 @@
+html, body {
+	/*height: 100%;*/
+}
+
 body {
 	background-image: url(<%= asset_path('query-background.png') %>);
 	background-repeat: no-repeat;
@@ -26,6 +30,20 @@ body {
 	width:100%;
 }
 
+.navbar {
+	margin-top: 20px;
+}
+
+.navbar a {
+	font-family: Montserrat, sans-serif;
+	line-height: 50px;
+	margin-left: 20px;
+	font-size: 1em;
+	color: #ffffff;
+	padding: 8px 12px 7px;
+	margin-top: 9px;
+}
+
 .autocomplete-suggestions {
 	color: #555555;
 	background-color: #eeeeee;
@@ -42,4 +60,51 @@ body {
 .autocomplete-selected {
 	background-color: #75caeb;
 	color: #ffffff;
+}
+
+.fill {
+	min-height: 100%;
+	margin-bottom: 5%;
+}
+
+#execute-container #query-compute-button {
+	width: 100%;
+}
+
+#query-answer-panel {
+	border: 1px solid #e7e7e7;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
+}
+
+#execute-container {
+	margin-top: 5%;
+}
+
+#query-answer-panel ul {
+	list-style-type: none;
+}
+
+#main-query-info ul{
+	text-align: left;
+	margin-left: 0;
+	font-size: 1.5em;
+}
+
+#main-query-info ul li {
+	margin: 2% 0;
+}
+
+.nav.navbar-nav.navbar-right li button {
+	margin-right: 10px;
+	margin-top: 8px;
+}
+
+.nav.navbar-nav.navbar-right li:last-child {
+	margin-right: 20px;
+}
+
+#logo-text {
+	border-width: 0 1px 4px 1px;
+	border-style: solid;
+	border-color: #117AA3;
 }
