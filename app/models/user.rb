@@ -14,7 +14,11 @@ class User < ActiveRecord::Base
   end
 
   def update_stripe
-    return if email.include? '@pennywhale.com'
+    if email.include? '@pennywhale.com'
+      self.role = "admin"
+      return
+    end
+    
     begin
     if customer_id.nil?
       raise "Stripe token not present. Can't create account" unless stripe_token.present?
