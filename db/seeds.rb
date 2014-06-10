@@ -214,8 +214,8 @@ intent = Intent.create(name: 'Forward P/E', code: "yahoo_key_stats('forward p/e'
 match_phrases_to_intent(['Forward PE', 'Forward P/E', 'Forward PE Ratio', 'Forward P/E Ratio', 'Forward Price to Earnings Ratio', 'Forward Price to Earnings'], intent)
 
 # Price/Sales
-intent = Intent.create(name: 'Price/Sales', code: "yahoo_key_stats('price/sales)")
-match_phrases_to_intent(['Price/Sales', 'Price/Sales Ratio', 'PS Ratio', 'PS', 'P/S', 'P/S ratio', 'Price Sales', 'Price Sales Ratio', 'Price to Sales Ratio', 'Price to Sales'], intent)
+intent = Intent.create(name: 'Price/Sales', code: "yahoo_key_stats('price/sales')")
+match_phrases_to_intent(['Price/Sales', 'Price/Sales Ratio', 'PS Ratio','P/S', 'P/S ratio', 'Price Sales', 'Price Sales Ratio', 'Price to Sales Ratio', 'Price to Sales'], intent)
 
 # Price/Book
 intent = Intent.create(name: 'Price/Book', code: "yahoo_key_stats('price/book')")
