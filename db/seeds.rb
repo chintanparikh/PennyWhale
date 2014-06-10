@@ -121,21 +121,9 @@ match_phrases_to_intent(['Fifty Day Moving Average', '50 Day Moving Average', 'P
 intent = Intent.create(name: 'Shares Float', code:"pull_from_yahoo('f6')")
 match_phrases_to_intent(['Shares Float', 'Float'], intent)
 
-# High Limit (doesnt work)
-intent = Intent.create(name: 'High Limit', code:"pull_from_yahoo('l2')")
-match_phrases_to_intent(['High Limit'], intent)
-
 # Holdings Gain + %
 intent = Intent.create(name: 'Holdings Gain', code: "percent_change_yahoo('g4','g1')")
 match_phrases_to_intent(['Holdings Gain', 'Gain from Holdings', 'Holdings Gain Percentage', 'Percentage Holdings Gain'], intent)
-
-# Holdings Value (doesnt work)
-intent = Intent.create(name: 'Holdings Value', code:"pull_from_yahoo('v1')")
-match_phrases_to_intent(['Holdings Value'], intent)
-
-# Low Limit (doesnt work)
-intent = Intent.create(name: 'Low Limit', code:"pull_from_yahoo('l3')")
-match_phrases_to_intent(['Low limit'], intent)
 
 # Market Capitalization
 intent = Intent.create(name: 'Market Capitalization', code: 'pull_from_yahoo("j1")')
@@ -318,19 +306,19 @@ intent = Intent.create(name: 'Beta', code: "yahoo_key_stats('beta')")
 match_phrases_to_intent(['Beta', 'Risk'], intent)
 
 # 52 week change
-intent = Intent.create(name: '52 week change', code: "yahoo_key_stats('52 week change')")
+intent = Intent.create(name: '52 week change', code: "yahoo_key_stats('52-week change')")
 match_phrases_to_intent(['52 Week Change', 'Year Change'], intent)
 
 # s&p 52 week change
-intent = Intent.create(name: 'S&P 52 week change', code: "yahoo_key_stats('s&p 52 week change')")
+intent = Intent.create(name: 'S&P 52 week change', code: "yahoo_key_stats('s&p500 52-week change')")
 match_phrases_to_intent(['S&P500 52 Week Change', 'S&P500 Year Change'], intent)
 
 # 3 month average volume
-intent = Intent.create(name: '3 month average volume', code: "yahoo_key_stats('3 month average volume')")
+intent = Intent.create(name: '3 month average volume', code: "yahoo_key_stats('avg vol')")
 match_phrases_to_intent(['Average 3 Month Volume', '3 Month Volume', 'Average Three Month Volume', 'Three Month Volume'], intent)
 
 # 10 day average volume
-intent = Intent.create(name: '10 day average volume', code: "yahoo_key_stats('10 day average volume')")
+intent = Intent.create(name: '10 day average volume', code: "yahoo_key_stats('avg vol')")
 match_phrases_to_intent(['Average 10 Day Volume', '10 Day Volume', 'Average Ten Day Volume', 'Ten Day Volume'], intent)
 
 # Shares Outstanding
