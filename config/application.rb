@@ -23,5 +23,8 @@ module PennyWhale
     config.assets.precompile += %w( app/base.css app/base.js)
     config.stripe.publishable_key = 'pk_test_7NjYG5IChANUs0sLVTNS0Vbl'
 
+    # Autoload files from lib
+    config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
+
   end
 end
