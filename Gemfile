@@ -43,6 +43,10 @@ gem 'haml-rails'
 gem 'nokogiri'
 gem 'rest-client'
 
+# User system
+gem 'devise'
+gem 'cancan'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
