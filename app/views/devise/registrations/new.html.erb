@@ -2,13 +2,6 @@
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 <% end %>
 
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
-<script type="text/javascript">
-  // This identifies your website in the createToken call below
-  Stripe.setPublishableKey('pk_test_7NjYG5IChANUs0sLVTNS0Vbl');
-  // ...
-</script>
 
 <%= render :partial => '/app/queries/navbar' %>
 
@@ -38,35 +31,38 @@
 					<%= f.label :password_confirmation %>
 					<%= f.password_field :password_confirmation, autocomplete: "off", class:"input-lg", style:"height:30px;width:300px" %>
 				</div>
+				<% if @user.stripe_token %>
+				    <p>Credit card acceptance is pending.</p>
+				<% else %>
+					<div id="card-form">
+						<div class="control-group">
+							<%= label_tag :card_number, "Credit Card Number" %>
+							<%= text_field_tag :card_number, nil, name: nil, placeholder: "•••• •••• •••• ••••", class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
 
-				<div id="card-form">
-					<div class="control-group">
-						<%= label_tag :card_number, "Credit Card Number" %>
-						<%= text_field_tag :card_number, nil, name: nil, placeholder: "•••• •••• •••• ••••", class: "input-lg", style: "height: 30px; width:300px" %>
-					</div>
+						<div class="control-group">
+							<%= label_tag :card_name, "Name on card" %>
+							<%= text_field_tag :card_name, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
 
-					<div class="control-group">
-						<%= label_tag :card_name, "Name on card" %>
-						<%= text_field_tag :card_name, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
-					</div>
+						<div class="control-group">
+							<%= label_tag :card_code, "Card Security Code (CVV)" %>
+							<%= text_field_tag :card_code, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
 
-					<div class="control-group">
-						<%= label_tag :card_code, "Card Security Code (CVV)" %>
-						<%= text_field_tag :card_code, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
+						<div class="control-group">
+							<%= label_tag :card_month, "Card Expiration: "  %>
+							<br />
+					        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", style: "width: 150px"} %>
+					        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", style: "width: 150px"}%>			      
+						</div>
+						<div class="control-group">
+							<%= f.label :coupon, "Coupon (if any)" %>
+							<br />
+							<%= f.text_field :coupon, class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
 					</div>
-
-					<div class="control-group">
-						<%= label_tag :card_month, "Card Expiration: "  %>
-						<br />
-				        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", style: "width: 150px"} %>
-				        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", style: "width: 150px"}%>			      
-					</div>
-					<div class="control-group">
-						<%= label_tag :coupon, "Coupon" %>
-						<br />
-						<%= text_field_tag :coupon, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
-					</div>
-				</div>
+				<% end %>
 
 				<%= f.hidden_field :stripe_token %>
 
@@ -100,6 +96,8 @@
 						</ul>
 					</div>
 					<a href="mailto: hello@pennywhale.com"> Individual or student investor? <br />Contact us for discounted pricing.</a>
+					<br/>
+					<br/>
 					<div class="card-wrapper"></div>
 				</div>
 			</div>

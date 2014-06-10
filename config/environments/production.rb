@@ -80,6 +80,5 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.stripe.publishable_key = 'pk_live_9f34BWGXGrFTmD9b7xZYw8zf'
 
 end

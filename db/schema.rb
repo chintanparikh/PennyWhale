@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610045006) do
+ActiveRecord::Schema.define(version: 20140610173838) do
 
   create_table "intents", force: true do |t|
     t.string   "name"
@@ -42,10 +42,8 @@ ActiveRecord::Schema.define(version: 20140610045006) do
     t.datetime "updated_at"
     t.integer  "role_mask"
     t.string   "role",                   default: "regular"
-    t.string   "stripe_token"
-    t.string   "coupon"
-    t.integer  "customer_id"
     t.integer  "last_4_digits"
+    t.string   "customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

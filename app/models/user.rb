@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_accessor :stripe_token, :coupon
+
   before_save :update_stripe
   before_destroy :cancel_subscription
 
@@ -15,7 +17,6 @@ class User < ActiveRecord::Base
     return if email.include? '@pennywhale.com'
     begin
     if customer_id.nil?
-      debugger
       raise "Stripe token not present. Can't create account" unless stripe_token.present?
 
       if coupon.blank?
