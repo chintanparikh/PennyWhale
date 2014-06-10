@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
 
     self.customer_id = customer.id
     self.stripe_token = nil
+    self.role = customer.subscriptions["data"][0]["plan"]["id"].to_sym
 
     rescue Stripe::StripeError => e
       logger.error "Stripe Error: " + e.message

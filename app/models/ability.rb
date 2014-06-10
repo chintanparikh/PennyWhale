@@ -6,13 +6,13 @@ class Ability
     user ||= User.new
 
     if user.is? :admin
-        can :manage, :all
-    elsif user.is? :superuser
-        can :manage, :all
+        can :execute, Intent
+    elsif user.is? :super
+        can :execute, Intent
     elsif user.is? :regular
-        can :manage, :all
-    else
-        can :manage, :all
+        can :execute, Intent
+    elsif user.is? :guest
+        cannot :execute, Intent
     end
 
 
