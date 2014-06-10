@@ -21,6 +21,7 @@ module PennyWhale
     # config.i18n.default_locale = :de
 
     config.assets.precompile += %w( app/base.css app/base.js)
+    config.stripe.publishable_key = 'pk_test_7NjYG5IChANUs0sLVTNS0Vbl'
 
   end
 end
