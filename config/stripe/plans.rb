@@ -29,7 +29,7 @@
 # begin using them in your API calls.
 
 Stripe.plan :super do |plan|
-  plan.name = 'Super user'
+  plan.name = 'Superuser'
   plan.amount = 5000
   plan.interval = 'month'
 end

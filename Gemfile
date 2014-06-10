@@ -47,6 +47,7 @@ gem 'rest-client'
 gem 'devise'
 gem 'cancan'
 gem 'stripe-rails'
+gem 'stripe'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,7 +1,15 @@
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+<% end %>
 
-<%= content_for :head do %>
-	<%= stripe_javascript_tag %>
-<%- end %>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+<script type="text/javascript">
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_7NjYG5IChANUs0sLVTNS0Vbl');
+  // ...
+</script>
+
 <%= render :partial => '/app/queries/navbar' %>
 
 <div class="container" style="margin-top:-30px">
@@ -59,6 +67,9 @@
 						<%= text_field_tag :coupon, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
 					</div>
 				</div>
+
+				<%= f.hidden_field :stripe_token %>
+
 
 				<div>
 					<%= f.submit "Sign up", class:"btn btn-success" %>

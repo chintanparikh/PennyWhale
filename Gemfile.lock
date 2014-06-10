@@ -203,6 +203,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   sqlite3
+  stripe
   stripe-rails
   therubyracer
   turbolinks
