@@ -1,5 +1,8 @@
 class App::QueriesController < App::BaseController
 	include App::QueriesHelper
+	# TODO Let non-signed in users try queries
+	before_filter authenticate_user!, only: [:execute]
+
 
 	def index
 	end
