@@ -46,8 +46,9 @@ class Stock
 		new_results = results.reject {|result| !result.keys[0].downcase.include? stat}
 
 		keys = [] 
-		new_results.each {|elem| keys.push(elem.keys[0])}
+		keys = new_results.map {|elem| elem.keys[0].gsub(/\(.*\)/, "")}
 		shortest = keys.min_by(&:length)
+		new_results.map! {|r| {r.keys[0].gsub(/\(.*\)/, "") => r.to_a[0][1]}}
 		new_results.each {|res| return res[shortest] if res.keys[0].eql? shortest}
 	end
 

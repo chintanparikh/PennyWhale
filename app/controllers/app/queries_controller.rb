@@ -27,6 +27,8 @@ class App::QueriesController < App::BaseController
 
 		# Check if phrase isn't found
 		@intent = phrase.intent
+
+		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|
 			{ticker: stock.ticker, data: @intent.get_data(stock.get_binding)}
