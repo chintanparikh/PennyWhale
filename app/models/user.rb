@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   
   def is? requested_role
-    self.role == requested_role
+    self.role.to_sym == requested_role
   end
 end
