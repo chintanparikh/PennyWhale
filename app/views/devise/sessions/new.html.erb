@@ -11,7 +11,7 @@
 	      <legend class="">Log-In</legend>
 	    </div>
 			
-				<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+				<%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
 
 				  <div class="control-group">
 					  <%= f.label :email, class:"control-label" %><br />
