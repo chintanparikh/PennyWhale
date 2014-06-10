@@ -5,29 +5,22 @@ class App::QueriesController < App::BaseController
 	end
 
 	def execute
-		stocks = params[:query].scan(/\$([a-zA-Z.]+)/).flatten.map{|stock| Stock.find(stock)}
+		query = QueryCleaner.new.run(params[:query])
+		stocks = StockExtractor.new(/\$([a-zA-Z.]+)/).run(query)
 
 		if stocks.empty?
 			flash.now[:danger] = "No stock tickers entered." 
 			return false
 		end
 
-		query = params[:query].gsub("'", '').gsub('"', '')
-
-		like = (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
-
-		phrases = Phrase.where("'#{query}' #{like} '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
-		phrases = phrases.sort{|a, b| string_distance(query, a.phrase) <=> string_distance(query, b.phrase)}
-		phrase = phrases[0]
+		phrase = PhraseExtractor.new(LevenshteinDistance.new).run(query)
 
 		if phrase.nil?
 			flash.now[:warning] = "Invalid query"
 			return false
 		end
 
-		# Check if phrase isn't found
 		@intent = phrase.intent
-
 		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|
@@ -35,7 +28,6 @@ class App::QueriesController < App::BaseController
 		end
 
 		@news = Stock.get_news stocks.map{|stock| stock.ticker}
-
 	end
 
 	def autocomplete
@@ -52,7 +44,6 @@ class App::QueriesController < App::BaseController
 															.map{|p| {input: params[:query], phrase: params[:query].reverse.sub(params[:query].split(' ')[i..length].join(' ').reverse, p.phrase.reverse).reverse}}
 			end		
 		end
-
 
 		@resp = {suggestions: @suggestions}
 
