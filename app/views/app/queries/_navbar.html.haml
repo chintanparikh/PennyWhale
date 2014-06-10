@@ -3,7 +3,7 @@
     .col-lg-1
     .col-lg-8  
       %h4
-        = link_to image_tag("http://www.pennywhale.com/img/nav-logo.png"), app_root_path
+        = link_to image_tag(asset_path('nav-logo.png')), app_root_path
         = link_to "PennyWhale", app_root_path
     .col-lg-1{style:"margin-top:20px"}
       = link_to "Help", app_queries_help_path
