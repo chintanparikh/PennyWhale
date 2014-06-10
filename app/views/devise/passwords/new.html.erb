@@ -1,12 +1,32 @@
-<h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= render :partial => '/app/queries/navbar' %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+<div class="container" style="margin-top:-30px">
+    <div class="row">
+    	<div class="span3">
+    	</div>
+		<div class="span6">
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+		<div id="legend">
+	      <legend class="">Forgot your password?</legend>
+	    </div>
+				
+				<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+				  <%= devise_error_messages! %>
 
-<%= render "devise/shared/links" %>
+				  <%= f.label :email, class:"control-label" %><br />
+				  <%= f.email_field :email, autofocus: true, class:"input-lg", style:"height:30px;width:300px" %>
+
+				  <div><%= f.submit "Send me reset password instructions", class:"btn btn-success"%></div>
+				<% end %>
+
+				<%= render "devise/shared/links" %>
+
+				<br/>
+
+		</div>
+
+		<div class="span3">
+    	</div>
+	</div>
+</div>
