@@ -20,36 +20,16 @@ class Stock
 	end
 
 	def pull_from_yahoo tag
-		endpoint = "http://download.finance.yahoo.com/d/quotes.csv?s=#{@ticker}&f=#{tag}"
-		data = CSV.parse(open(endpoint))
-		data[0][0]
+		fundamentals = Yahoo.get_fundamentals @ticker, [tag]
+		fundamentals[0]
 	end
 
 	def percent_change_yahoo tag_value, tag_percent
-		endpoint = "http://download.finance.yahoo.com/d/quotes.csv?s=#{@ticker}&f=#{tag_value},#{tag_percent}"
-		data = CSV.parse(open(endpoint))
-		data[0][0]+"(#{data[0][2]})"
+		Yahoo.get_percent_change @ticker, [tag_value, tag_percent]
 	end
 
 	def yahoo_key_stats stat
-		endpoint = "http://www.kimonolabs.com/api/6h5bewws?apikey=dc1715b533f396e15a4a43914c9c901f&s=#{@ticker}"
-		
-		begin 
-			response = RestClient.get(endpoint)
-		rescue 
-			#try again 
-			response = RestClient.get(endpoint)
-		end
-
-		parsed = JSON.parse(response)
-		results = parsed['results']['collection1'].map{|elem| {elem['property_name'] => elem['property_value']}}
-		new_results = results.reject {|result| !result.keys[0].downcase.include? stat}
-
-		keys = [] 
-		keys = new_results.map {|elem| elem.keys[0].gsub(/\(.*\)/, "")}
-		shortest = keys.min_by(&:length)
-		new_results.map! {|r| {r.keys[0].gsub(/\(.*\)/, "") => r.to_a[0][1]}}
-		new_results.each {|res| return res[shortest] if res.keys[0].eql? shortest}
+		Yahoo.key_statistic @ticker, stat
 	end
 
 	def ticker
@@ -59,14 +39,10 @@ class Stock
 	def self.get_news tickers
 		ticker_string = tickers.join(",")
 		endpoint = "http://feeds.finance.yahoo.com/rss/2.0/headline?s=" + ticker_string + "&region=US&lang=en-US"
-		news = []
 		
 		feed = RSS::Parser.parse(open(endpoint))
 
-		feed.items.each do |item|
-			news.push({title: item.title, link: item.link})
-	  end
-		news
+		feed.items.map {|item| {title: item.title, link: item.link}}
 	end
 
 	def markets_open?
