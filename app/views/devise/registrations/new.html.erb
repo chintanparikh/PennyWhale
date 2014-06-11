@@ -1,5 +1,6 @@
 <% content_for :head do %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+  <%= stylesheet_link_tag 'devise' %>
 <% end %>
 
 
@@ -35,6 +36,11 @@
 				    <p>Credit card acceptance is pending.</p>
 				<% else %>
 					<div id="card-form">
+						<img src="https://distrokid.com/images/lock.png" id="lock"/>
+						<h3>Secure Credit Card Details</h3>
+						<p style="margin-bottom: 0;">Secure 128-bit SSL encryption</p>
+
+						<p>We'll email you <b>before</b> your trial is over</p>
 						<div class="control-group">
 							<%= label_tag :card_number, "Credit Card Number" %>
 							<%= text_field_tag :card_number, nil, name: nil, placeholder: "•••• •••• •••• ••••", class: "input-lg", style: "height: 30px; width:300px" %>
@@ -54,7 +60,7 @@
 							<%= label_tag :card_month, "Card Expiration: "  %>
 							<br />
 					        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", style: "width: 150px"} %>
-					        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", style: "width: 150px"}%>			      
+					        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", style: "width: 144px"}%>			      
 						</div>
 						<div class="control-group">
 							<%= f.label :coupon, "Coupon (if any)" %>
