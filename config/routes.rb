@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'home#index'
+  post 'stripe/webhook', to: "stripe#webhook"
 
   namespace :app do
     root 'queries#index'
