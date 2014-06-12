@@ -6,7 +6,13 @@ class App::QueriesController < App::BaseController
 
 	def execute
 		query = QueryCleaner.new.run(params[:query])
-		stocks = StockExtractor.new(/\$([a-zA-Z.]+)/).run(query)
+		log = Log.create(query: query)
+		log.update_attributes(user_id: current_user.id) unless current_user.nil?
+
+		tickers = TickerExtractor.new(/\$([a-zA-Z.]+)/).run(query)
+		log.update_attributes(tickers: tickers)
+
+		stocks = tickers.map{|ticker| Stock.find(ticker)}
 
 		if stocks.empty?
 			flash.now[:danger] = "No stock tickers entered." 
@@ -21,6 +27,8 @@ class App::QueriesController < App::BaseController
 		end
 
 		@intent = phrase.intent
+		log.update_attributes(phrase_id: phrase.id, intent_id: @intent.id)
+
 		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|

@@ -1,3 +1,5 @@
 class Log < ActiveRecord::Base
-  has_one :intent, :user, :phrase
+  belongs_to :intent
+  belongs_to :user 
+  belongs_to :phrase
 end
