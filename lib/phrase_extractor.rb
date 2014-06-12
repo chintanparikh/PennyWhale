@@ -5,9 +5,7 @@ class PhraseExtractor
   end
 
   def run query
-    like = (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
-
-    phrases = Phrase.where("'#{query}' #{like} '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
+    phrases = Phrase.where("'#{query}' ILIKE '%' ||  phrase || '%'").order("LENGTH(phrase) ASC")
     phrases = phrases.sort{|a, b| @string_distance_algorithm.run(query, a.phrase) <=> @string_distance_algorithm.run(query, b.phrase)}
     phrase = phrases[0]
   end

@@ -6,7 +6,13 @@ class App::QueriesController < App::BaseController
 
 	def execute
 		query = QueryCleaner.new.run(params[:query])
-		stocks = StockExtractor.new(/\$([a-zA-Z.]+)/).run(query)
+		log = Log.create(query: query)
+		log.update_attributes(user_id: current_user.id) unless current_user.nil?
+
+		tickers = TickerExtractor.new(/\$([a-zA-Z.]+)/).run(query)
+		log.update_attributes(tickers: tickers)
+
+		stocks = tickers.map{|ticker| Stock.find(ticker)}
 
 		if stocks.empty?
 			flash.now[:danger] = "No stock tickers entered." 
@@ -21,6 +27,8 @@ class App::QueriesController < App::BaseController
 		end
 
 		@intent = phrase.intent
+		log.update_attributes(phrase_id: phrase.id, intent_id: @intent.id)
+
 		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|
@@ -32,14 +40,13 @@ class App::QueriesController < App::BaseController
 
 	def autocomplete
 		# LIKE is case insensitive in sqlite (testing, develop), but not in postgres (staging, production), so we need ILIKE for those cases
-		like = (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
 		@suggestions = []
 		length = params[:query].split(' ').count
 
 		0.upto(length - 1).each do |i|
 			if @suggestions.empty?
 				@suggestions += Phrase.select([:phrase])
-															.where("phrase #{like} ?", "%#{params[:query].split(' ')[i..length].join(' ')}%")
+															.where("phrase ILIKE ?", "%#{params[:query].split(' ')[i..length].join(' ')}%")
 															.order("LENGTH(phrase) ASC")
 															.map{|p| {input: params[:query], phrase: params[:query].reverse.sub(params[:query].split(' ')[i..length].join(' ').reverse, p.phrase.reverse).reverse}}
 			end		
