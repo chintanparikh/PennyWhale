@@ -1,43 +1,66 @@
-#modal.modal.fade
-  .modal-dialog
-    .modal-content
-      .modal-header
-        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-        %h4.modal-title You've been added to the waitlist!
-      .modal-body
-        %p Thanks for signing up. We'll shoot you an email once we're ready.
-        %p
-          We're always looking to talk to investors about how they intend to use our product - if you're interested in talking to us, please email us at
-          = succeed "." do
-            %a{href: "mailto:hello@pennywhale.com"} hello@pennywhale.com
-      .modal-footer
-        %button.btn.btn-primary{"data-dismiss" => "modal", type: "button"} Got it!
-    / /.modal-content
-  / /.modal-dialog
-/ /.modal
-.container
-  .row
-    #logo
-      = image_tag asset_path('nav-logo.png')
-      %h1 PennyWhale
-      = link_to "Login", user_session_path, style: 'float: right; margin-top: 23px;margin-right:10px; color:#fff'
-#tagline.container
-  %h1
-    Are you ready to
-    %em supercharge
-    your financial research?
-#typed.container
-  %input#example{type: "text"}/
-#email-wrapper.container
-  #form-wrapper
-    #form-input-group.input-group.input-group-lg
-      %form#form1{"accept-charset" => "UTF-8", action: "https://pennywhale.wufoo.com/forms/z16decyt0j9y4ps/#public", autocomplete: "off", enctype: "multipart/form-data", method: "post", name: "form1", novalidate: ""}
-        %input#email-input.form-control{name: "Field1", placeholder: "Email Address", required: "", type: "text"}/
-        %input#idstamp{name: "idstamp", type: "hidden", value: "+976pwqWgGtaxelPLl5vBfhKuBYCYUmYk0jqUt1g6OI="}/
-        %span.input-group-btn
-          %button#email-submit.btn.btn-info{type: "button"} Get early access
-    / /input-group
+%header#header
+  %nav#navigation{role: "navigation"}
+    .container
+      %br/
+      .row
+        .col-lg-3
+          = image_tag asset_path('pennywhale-logo-white.png')
+          %h4 PennyWhale
+        .col-lg-6
+        .col-lg-3
+          %ul
+            %li
+              = link_to "Help", app_queries_help_path
+            - if current_user
+              %li
+                = link_to "Account", edit_user_registration_path 
+            %li
+              - if current_user.nil?
+                = link_to "Login", user_session_path 
+              - else
+                = link_to "Logout", destroy_user_session_path, method: :delete
+  %section#hero.center.full-viewport
+    .wrapper.center{style: "height: 317px;"}
+      .container{align: "center", style: "margin-top:150px"}
+        .container{style: "margin-bottom:220px"}
+          %h1{style: "font-weight:300;color:#fff;font-size:32px"}
+            Are you ready to
+            %b
+              %i supercharge
+            your financial research?
+          %br/
+          %br/
+          %br/
+          = render 'app/queries/search_form'
+          %br/
+          %span#changer
+            Show me the PE Ratios for $AAPL vs $GOOG
+        = image_tag asset_path('arrow.png')
+.container{style: "margin-top:150px;margin-bottom:100px"}
+  #features.row{style: "margin-bottom:100px"}
+    .col-lg-5
+      %h3{style: "color:#2480BD"} Access your data, intuitively.
+      %p.lead Search key statistics in natural English. With over 250,000+ data points at your fingertips, finding financial data has never been so easy.
+    .col-lg-7{style: "margin-top:5px"}
+      = image_tag asset_path('feature.png')
+  .row{style: "margin-bottom:130px"}
+    .col-lg-8
+      = image_tag asset_path('feature2.png')
+    .col-lg-4{style: "margin-top:75px"}
+      %h3{style: "color:#2480BD"} Track the big players.
+      %p.lead Easily follow moves of hedge funds and trendsetters. PennyWhale provides holdings for 55 major funds, spanning from Berkshire Hathaway to Greenlight Captial.
+  .row{style: "margin-bottom:100px"}
+    .col-lg-5{style: "margin-top:70px"}
+      %h3{style: "color:#2480BD"} Comparative analysis made easy.
+      %p.lead Conduct research for all the securities you are tracking at once. Just search your datapoint, attach company tickers, and get results.
+    .col-lg-7
+      = image_tag asset_path('feature.gif')
+  %hr/
+  #pricing.row{align: "center", style: "margin-bottom:20px;margin-top:100px"}
+    %h3{style: "color:2480BD"}
+      Try it out now for free!
+      %button.btn.btn-primary.btn-lg{style: "display:inline; margin-left:20px ", type: "button"} Sign up now
 %footer
-  %div
-    %p
-      © 2014 PennyWhale. All Rights Reserved.
+  #footer
+    .container
+      %p{style: "float:right;margin-top:20px"} © 2014 PennyWhale. All Rights Reserved.  
