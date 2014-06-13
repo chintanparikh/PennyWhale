@@ -14,4 +14,20 @@ module BootstrapHelper
 		end
 		markup += '</div>'
 	end
+
+	def flash_messages_for key, css_class
+		output = ''
+		output += "<div class='alert-#{css_class} alert fade in alert-dismissable'>#{flash[key]}<button class='close' data-dismiss='alert'>&times;</button></div>" if flash[key]
+
+		if flash["#{key}_array".to_sym]
+		  flash["#{key}_array".to_sym].each do |message|
+		    output += "<div class='alert-#{css_class} alert fade in alert-dismissable'>
+		    					    #{message}
+		    					  <button class='close' data-dismiss='alert'>&times;
+		    					  </button>
+		    					</div>"
+			end
+		end		
+		output
+	end
 end

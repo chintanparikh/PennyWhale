@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     current_user ||= User.new
     if current_user.is? :guest and cookies[:queries].to_i > 10
-      flash[:error] = "Your guest queries have run out - please log in or create a free account for unlimited queries"
+      flash[:notice] = "Your guest queries have run out - please log in or create a free account for unlimited queries"
     elsif !exception.subject.is_executable_by? current_user.role
-      flash[:message] = "Please upgrade to access that query"
+      flash[:notice] = "Please upgrade to access that query"
     else
       flash[:error] = "Unauthorized"
     end

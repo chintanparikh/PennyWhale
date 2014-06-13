@@ -10,10 +10,15 @@ class App::QueriesController < App::BaseController
 	def execute
 		@query, errors, warnings = QueryCleaner.new.run(params[:query])
 
-		flash_messages :error, errors
+		if current_user.nil?
+			queries = cookies[:queries].to_i || 0
+			cookies[:queries] = queries + 1
+		end
+
+		flash_messages :query_error, errors
 		return false unless errors.empty?
 
-		flash_messages :warning, warnings
+		flash_messages :query_warning, warnings
 
 		@tickers = TickerExtractor.new(/\$([a-zA-Z.]+)/).run(@query)
 		stocks = @tickers.map{|ticker| Stock.find(ticker)}
@@ -21,7 +26,7 @@ class App::QueriesController < App::BaseController
 		@phrase = PhraseExtractor.new(LevenshteinDistance.new).run(@query)
 
 		if @phrase.nil?
-			flash_message :error, "Invalid query"
+			flash_message :query_error, "Invalid query"
 			return false
 		end
 
