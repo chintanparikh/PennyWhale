@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   root 'home#index'
   post 'stripe/webhook', to: "stripe#webhook"
 
+  get 'pages/terms_of_use', to:"pages#terms_of_use"
+  get 'pages/privacy_policy', to:"pages#privacy_policy"
+
   namespace :app do
     root 'queries#index'
     get  'queries/index', to: 'queries#index', as: :queries_index
