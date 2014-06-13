@@ -1,19 +1,6 @@
 #main-query-info
-  - unless @intent.name == "Institutional Holdings"
-    %ul
-      - @output.each do |out|
-        %li 
-          - if @intent.name == "Total cash"
-            = @intent.name + " (mrq)"
-          - else
-            = @intent.name
-          for 
-          %strong
-            = out[:ticker]
-          is 
-          %strong 
-            = out[:data]
-  - else
+  - if @intent.name == "Default"
+  - elsif @intent.name == "Institutional Holdings"
     #13f
       %ul.nav.nav-tabs
         - @output.each do |out|
@@ -45,3 +32,18 @@
                       = row["share_change"] 
                     %td
                       = row["percentage"] + '%'
+  - else
+    %ul
+      - @output.each do |out|
+        %li 
+          - if @intent.name == "Total cash"
+            = @intent.name + " (mrq)"
+          - else
+            = @intent.name
+          for 
+          %strong
+            = out[:ticker]
+          is 
+          %strong 
+            = out[:data]
+    

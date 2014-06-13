@@ -28,17 +28,17 @@ class App::QueriesController < App::BaseController
 		@phrase = PhraseExtractor.new(LevenshteinDistance.new).run(@query)
 
 		if @phrase.nil?
-			flash_message :query_error, "Invalid query"
-			return false
+			@intent = Intent.find_by_name("Default")
+			flash_message :query_warning, "We don't recognize that query - feel free to contact us if it should be included."
 		end
 
-		@intent = @phrase.intent
+		@intent ||= @phrase.intent
 		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|
 			{ticker: stock.ticker, data: @intent.get_data(stock.get_binding)}
 		end
-
+		@output ||= []
 		@news = Stock.get_news stocks.map{|stock| stock.ticker}
 	end
 
