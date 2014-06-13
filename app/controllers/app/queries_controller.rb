@@ -1,34 +1,31 @@
 class App::QueriesController < App::BaseController
-	include App::QueriesHelper
+	include ApplicationHelper
+
+	after_action :log_query, only: :execute
 
 	def index
 	end
 
+	# We create the log in log_query through an after_filter
 	def execute
-		query = QueryCleaner.new.run(params[:query])
-		log = Log.create(query: query)
-		log.update_attributes(user_id: current_user.id) unless current_user.nil?
+		@query, errors, warnings = QueryCleaner.new.run(params[:query])
 
-		tickers = TickerExtractor.new(/\$([a-zA-Z.]+)/).run(query)
-		log.update_attributes(tickers: tickers)
+		flash_messages :error, errors
+		return false unless errors.empty?
 
-		stocks = tickers.map{|ticker| Stock.find(ticker)}
+		flash_messages :warning, warnings
 
-		if stocks.empty?
-			flash.now[:danger] = "No stock tickers entered." 
+		@tickers = TickerExtractor.new(/\$([a-zA-Z.]+)/).run(@query)
+		stocks = @tickers.map{|ticker| Stock.find(ticker)}
+
+		@phrase = PhraseExtractor.new(LevenshteinDistance.new).run(@query)
+
+		if @phrase.nil?
+			flash_message :error, "Invalid query"
 			return false
 		end
 
-		phrase = PhraseExtractor.new(LevenshteinDistance.new).run(query)
-
-		if phrase.nil?
-			flash.now[:warning] = "Invalid query"
-			return false
-		end
-
-		@intent = phrase.intent
-		log.update_attributes(phrase_id: phrase.id, intent_id: @intent.id)
-
+		@intent = @phrase.intent
 		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|
@@ -39,7 +36,6 @@ class App::QueriesController < App::BaseController
 	end
 
 	def autocomplete
-		# LIKE is case insensitive in sqlite (testing, develop), but not in postgres (staging, production), so we need ILIKE for those cases
 		@suggestions = []
 		length = params[:query].split(' ').count
 
@@ -63,4 +59,15 @@ class App::QueriesController < App::BaseController
 		@intents = Intent.select(:name).map{|i| i.name}
 	end
 
+
+	private
+	def log_query
+		log = Log.create(
+			query: @query, 
+			user_id: (current_user.nil? ? nil : current_user.id),
+			tickers: @tickers,
+			phrase_id: @phrase,
+			intent_id: @intent
+			)
+	end
 end
