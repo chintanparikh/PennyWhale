@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery.autocomplete
+//= require jquery.readyselector
+//= require jquery.externalscript
 //= require_directory .

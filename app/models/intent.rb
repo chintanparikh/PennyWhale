@@ -4,5 +4,8 @@ class Intent < ActiveRecord::Base
 	def get_data binding
 		eval(code, binding)
 	end
-	
+  
+  def is_executable_by? role
+    executable_by.include? role.to_s
+  end	
 end

@@ -1,8 +1,14 @@
 .row
   .col-lg-2
   .col-lg-8
-    - flash.each do |type, message|
-      .alert.fade.in.alert-dismissable{class: "alert-#{type}"}
-        %button.close{data: {dismiss: 'alert'}} &times;
-        = message
+    - unless flash[:query_error_array].nil?
+      - flash[:query_error_array].each do |message|
+        .alert.fade.in.alert-dismissable{class: "alert-danger"}
+          %button.close{data: {dismiss: 'alert'}} &times;
+          = message
+    - unless flash[:query_warning_array].nil?
+      - flash[:query_warning_array].each do |message|
+        .alert.fade.in.alert-dismissable{class: "alert-warning"}
+          %button.close{data: {dismiss: 'alert'}} &times;
+          = message
   .col-lg-2

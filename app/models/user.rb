@@ -6,19 +6,19 @@ class User < ActiveRecord::Base
 
   attr_accessor :stripe_token, :coupon
 
-  before_save :update_stripe
+  after_create :set_role
   before_destroy :cancel_subscription
 
+  # Possible roles are :admin, :super, :regular, :guest
   def is? requested_role
     self.role.to_sym == requested_role
   end
 
-  def update_stripe
-    if email.include? '@pennywhale.com'
-      self.role = "admin"
-      return
-    end
-    
+  def set_role
+    self.role = "regular"
+  end
+
+  def update_stripe stripe_token
     begin
     if customer_id.nil?
       raise "Stripe token not present. Can't create account" unless stripe_token.present?
@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
     self.customer_id = customer.id
     self.stripe_token = nil
     self.role = customer.subscriptions["data"][0]["plan"]["id"].to_sym
+    save
 
     rescue Stripe::StripeError => e
       logger.error "Stripe Error: " + e.message
