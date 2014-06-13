@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception| 
     current_user ||= @current_user || User.new
-    if current_user.is? :guest and cookies[:queries].to_i > 10
+    if current_user.is? :guest and cookies[:queries].to_i >= 10
       flash[:notice] = "Your guest queries have run out - please log in or create a free account for unlimited queries"
       redirect_to new_user_session_path
     elsif @current_ability.cannot? :execute, exception.subject
