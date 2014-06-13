@@ -17,6 +17,9 @@ all_roles = ["admin", "super", "regular", "guest"]
 logged_in_roles = ["admin", "super", "regular"]
 paid_roles = ["admin", "super"]
 
+# General Intent
+intent = Intent.create(name: "Default", code: "", executable_by: all_roles)
+
 # After Hours Price
 intent = Intent.create(name: 'After Hours Price', code: "pull_from_yahoo('c8')", executable_by: all_roles)
 match_phrases_to_intent(['After Hours', 'After Hours Price', 'After Hours Change'], intent)

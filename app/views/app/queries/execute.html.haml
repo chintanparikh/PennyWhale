@@ -3,7 +3,7 @@
   = render 'remaining_queries'
   = render 'search_form'
   = render 'app/queries/components/errors' unless flash[:query_error_array].nil? and flash[:query_warning_array].nil?
-  - if flash[:query_warning_array].nil? and flash[:query_error_array].nil?
+  - if flash[:query_error_array].nil?
     .col-lg-2
     .col-lg-8.fill.panel.panel-default#query-answer-panel
       .panel-body
