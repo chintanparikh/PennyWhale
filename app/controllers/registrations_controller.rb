@@ -1,6 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def upgrade
   	@user = current_user
+    redirect_to new_user_session_path if @user.nil?  
   end
 
   def upgrade_user
