@@ -3,6 +3,6 @@
     Headlines for 
     = @output.map{|o| o[:ticker]}.join(', ')
   %ul
-    - @news.each do |article|
+    - @news.first(5).each do |article|
       %li
         = link_to article[:title], article[:link]
