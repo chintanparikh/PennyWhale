@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   before_save :update_stripe
   before_destroy :cancel_subscription
 
+  # Possible roles are :admin, :super, :regular, :guest
   def is? requested_role
     self.role.to_sym == requested_role
   end
