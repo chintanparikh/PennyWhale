@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   def update_stripe
     if email.include? '@pennywhale.com'
-      self.role = "admin"
+      self.role = "regular"
       return
     end
     
