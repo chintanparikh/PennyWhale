@@ -3,7 +3,10 @@
     %ul
       - @output.each do |out|
         %li 
-          = @intent.name 
+          - if @intent.name == "Total cash"
+            = @intent.name + " (mrq)"
+          - else
+            = @intent.name
           for 
           %strong
             = out[:ticker]
