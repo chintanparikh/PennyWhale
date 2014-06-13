@@ -1,0 +1,102 @@
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+<% end %>
+
+
+<%= render :partial => '/app/queries/navbar' %>
+
+
+<div class="container" style="margin-top:50px;margin-bottom:50px">
+	<div class="row">
+		<div class="span2"></div>
+
+		<div class="span4">
+			<h4>Upgrade your account</h4>
+			<br/>
+
+			<%= form_tag(url: upgrade_user_path(resource_name)) do |f| %>
+				
+				<% if @user.stripe_token %>
+				    <p>Credit card acceptance is pending.</p>
+				<% else %>
+
+					<div id="card-form">
+						<img src="https://distrokid.com/images/lock.png" id="lock"/>
+						<h3>Secure Credit Card Details</h3>
+						<p style="margin-bottom: 0;">Secure 128-bit SSL encryption</p>
+
+						<br>
+
+						<div class="control-group">
+							<%= label_tag :card_number, "Credit Card Number" %>
+							<%= text_field_tag :card_number, nil, name: nil, placeholder: "•••• •••• •••• ••••", class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
+
+						<div class="control-group">
+							<%= label_tag :card_name, "Name on card" %>
+							<%= text_field_tag :card_name, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
+
+						<div class="control-group">
+							<%= label_tag :card_code, "Card Security Code (CVV)" %>
+							<%= text_field_tag :card_code, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
+
+						<div class="control-group">
+							<%= label_tag :card_month, "Card Expiration: "  %>
+							<br />
+					        <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", style: "width: 150px"} %>
+					        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", style: "width: 144px"}%>			      
+						</div>
+						<div class="control-group">
+							<%= label_tag :coupon, "Coupon code (if any)" %>
+							<%= text_field_tag :coupon, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
+						</div>
+
+					</div>
+
+				<% end %>
+
+				<%= hidden_field_tag :stripe_token %>
+
+
+				<div>
+					<%= submit_tag "Upgrade account", class:"btn btn-success" %>
+				</div>
+
+
+
+			<% end %>
+
+
+		</div>
+
+		<div class="span-3" style="margin-top:30px">
+			<div class="row" align="center">
+				<div class="panel panel-info" style="width:300px;">
+					<div class="panel-heading">
+						<h4 class="text-center">PRO PLAN</h4>
+					</div>
+					<div class="panel-body text-center" style="margin-bottom:-13px">
+						<p class="lead" style="margin-bottom:5px">
+							<strong>$50 / month</strong>
+							<br/>
+							<small >(Cancel anytime)</small>
+						</p>
+						</div>
+						<ul class="list-group list-group-flush text-center" style="margin-left:0;">
+							<li class="list-group-item"><i class="icon-ok text-danger"></i> 250,000+ fundamental data points</li>
+							<li class="list-group-item"><i class="icon-ok text-danger"></i> Institutional holdings data for 55 funds</li>
+							<li class="list-group-item"><i class="icon-ok text-danger"></i> 24/7 support</li>
+						</ul>
+					</div>
+					<a href="mailto: hello@pennywhale.com"> Individual or student investor? <br />Contact us for discounted pricing.</a>
+					<br/>
+					<div class="card-wrapper" style="text-align: left;"></div>
+				</div>
+			</div>
+
+				
+			<div class="span2"></div>
+	</div>
+</div>

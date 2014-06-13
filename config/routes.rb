@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
 
   devise_scope :user do
-    get '/users/upgrade(.:format)', to: "registrations#upgrade"
+    get '/users/upgrade(.:format)', to: "registrations#upgrade", as: "upgrade"
+    post '/users/upgrade(.:format)', to: "registrations#upgrade_user", as: "upgrade_user"
   end
 
   root 'home#index'
