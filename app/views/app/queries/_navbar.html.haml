@@ -1,17 +1,19 @@
 .container{style:"margin-top:40px"}
   .row
     .col-lg-1
-    .col-lg-7  
+    .col-lg-6 
       %h4
         = link_to image_tag(asset_path('nav-logo.png')), app_root_path
         = link_to "PennyWhale", app_root_path
-    .col-lg-3{style:"margin-top:20px"}
+    .col-lg-4{style:"margin-top:20px"}
       %ul#nav
         %li
           = link_to "Help", app_queries_help_path
         - if current_user
           %li
             = link_to "Account", edit_user_registration_path 
+          %li
+            = link_to "Upgrade", upgrade_path unless current_user.is? :super
         %li
           - if current_user.nil?
             = link_to "Login", user_session_path 

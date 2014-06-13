@@ -5,9 +5,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def upgrade_user
   	@user = current_user
-  	@user.update_stripe
-  	debugger
-  	flash[:message] = "You've been upgraded to a superuser - try out the pro features, and feel free to contact us with any questions."
+  	@user.update_stripe(params[:stripe_token])
+  	flash[:notice] = "You've been upgraded - try out the pro features, and feel free to contact us with any questions."
   	redirect_to app_root_path
   end
 end
