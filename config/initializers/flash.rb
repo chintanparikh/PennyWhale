@@ -1,18 +1,9 @@
-# Monkey patch flash messages to turn them into arrays
-class ActionDispatch::Flash::FlashHash
+class FlashHash
   def [](k)
-    @flashes[k.to_s] ||= []
-    if @flashes[k.to_s].empty?
-      return nil
-    elsif @flashes[k.to_s].size == 1
-      return @flashes[k.to_s][0]
+    unless @flash["#{k}_array"].nil? or @flash["#{k}_array"].empty?
+      return [@flashes[k.to_s]] + @flash["#{k}_array"]
     else
       return @flashes[k.to_s]
     end
-  end
-
-  def [](k, v)
-    @flashes[k.to_s] ||= []
-    @flashes[k.to_s] << v
   end
 end
