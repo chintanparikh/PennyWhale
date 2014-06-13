@@ -27,6 +27,7 @@ module App::GraphsHelper
 			tickers.each do |ticker|
 				graphs.push({content: "<img src='http://www.nasdaq.com//charts/#{ticker}_egr.jpeg' />", ticker: ticker, id: 'graph'})
 			end
+			graph = make_tabs graphs
 		else
 			graph = "<!-- TradingView Widget BEGIN -->
 							<div id='tv-medium-widget-7cd56'></div>

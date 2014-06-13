@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "Your guest queries have run out - please log in or create a free account for unlimited queries"
       redirect_to new_user_session_path
     elsif @current_ability.cannot? :execute, exception.subject
-      flash[:notice] = "Please upgrade to access that query"
-      redirect_to root_path
+      flash[:notice] = "Please upgrade to a pro account for that feature"
+      redirect_to upgrade_path
     else
       flash[:error] = "Unauthorized"
       redirect_to new_user_session_path if current_user.guest?
