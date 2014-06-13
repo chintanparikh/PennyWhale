@@ -12,7 +12,9 @@ class App::QueriesController < App::BaseController
 
 		if current_user.nil?
 			queries = cookies[:queries].to_i || 0
-			cookies[:queries] = queries + 1
+			queries = queries + 1
+			queries = 10 if queries > 10
+			cookies[:queries] = queries
 		end
 
 		flash_messages :query_error, errors
