@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
     save
   end
 
-  def update_stripe stripe_token
+  def update_stripe stripe_token, coupon
+    debugger
     begin
     if customer_id.nil?
       raise "Stripe token not present. Can't create account" unless stripe_token.present?

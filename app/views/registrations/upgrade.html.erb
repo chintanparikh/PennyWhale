@@ -50,18 +50,20 @@
 						</div>
 						<div class="control-group">
 							<%= label_tag :coupon, "Coupon code (if any)" %>
-							<%= text_field_tag :coupon, nil, name: nil, placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
+							<%= text_field_tag :coupon, nil, name: 'coupon', placeholder: "", class: "input-lg", style: "height: 30px; width:300px" %>
 						</div>
+						<%= hidden_field_tag :stripe_token %>
+
+						<%= submit_tag "Upgrade account", class:"btn btn-success" %>
+
 
 					</div>
 
 				<% end %>
 
-				<%= hidden_field_tag :stripe_token %>
 
 
 				<div>
-					<%= submit_tag "Upgrade account", class:"btn btn-success" %>
 				</div>
 
 
