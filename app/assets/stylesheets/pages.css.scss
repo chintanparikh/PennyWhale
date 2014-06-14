@@ -2,17 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-p {
+#pages p {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	line-height: 1.6;
 }
 
-li {
+#pages li {
 	line-height: 1.6;
 }
 
-strong {
+#pages strong {
 	display: block;
 	margin-bottom: 5px;
 }
