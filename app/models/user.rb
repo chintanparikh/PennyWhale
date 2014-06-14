@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   def set_role
     self.role = "regular"
+    save
   end
 
   def update_stripe stripe_token
