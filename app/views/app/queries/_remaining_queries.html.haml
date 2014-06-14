@@ -1,0 +1,11 @@
+.container
+  .row
+    .col-lg-2
+    .col-lg-8
+      .row
+        .col-md-10
+          - if current_user.nil? or current_user.is? :guest
+            %p.remaining-queries{style: "float: right;margin-right: 15px;color: #BEBEBE;"} 
+              = pluralize(remaining_queries, "Guest Query") 
+              Remaining
+    .col-lg-2

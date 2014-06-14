@@ -15,7 +15,7 @@ class Ability
       can :execute, Intent do |intent|
         intent.is_executable_by? :regular
       end
-    elsif user.is? :guest and num_queries <= 10
+    elsif user.is? :guest and num_queries < 10
       can :execute, Intent do |intent|
         intent.is_executable_by?(:guest)
       end
