@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
+
+  devise_scope :user do
+    get '/users/upgrade(.:format)', to: "registrations#upgrade", as: "upgrade"
+    post '/users/upgrade(.:format)', to: "registrations#upgrade_user", as: "upgrade_user"
+  end
+
   root 'home#index'
   post 'stripe/webhook', to: "stripe#webhook"
+
+  get 'pages/terms_of_use', to:"pages#terms_of_use"
+  get 'pages/privacy_policy', to:"pages#privacy_policy"
 
   namespace :app do
     root 'queries#index'

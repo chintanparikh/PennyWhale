@@ -40,7 +40,6 @@ gem "twitter-bootstrap-rails"
 gem 'haml-rails'
 gem 'nokogiri'
 gem 'rest-client'
-
 # User system
 gem 'devise'
 gem 'cancan'

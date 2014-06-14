@@ -3,7 +3,7 @@ $("#registrations").ready ->
     Stripe.setPublishableKey $("meta[name=\"stripe-key\"]").attr("content")
     subscription =
       setupForm: ->
-        $("#new_user").submit ->
+        $("#upgrade_form").submit ->
           $("input[type=submit]").prop "disabled", true
           if $("#card_number").length
             subscription.processCard()
@@ -24,8 +24,8 @@ $("#registrations").ready ->
 
       handleStripeResponse: (status, response) ->
         if status is 200
-          $("#user_stripe_token").val response.id
-          $("#new_user")[0].submit()
+          $("#stripe_token").val response.id
+          $("#upgrade_form")[0].submit()
         else
           $("#stripe_error").text(response.error.message).show()
           $("input[type=submit]").prop "disabled", false

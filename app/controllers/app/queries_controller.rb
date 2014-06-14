@@ -1,45 +1,55 @@
 class App::QueriesController < App::BaseController
-	include App::QueriesHelper
+	include ApplicationHelper
+
+	after_action :log_query, only: :execute
 
 	def index
 	end
 
+	# We create the log in log_query through an after_filter
 	def execute
-		query = QueryCleaner.new.run(params[:query])
-		stocks = StockExtractor.new(/\$([a-zA-Z.]+)/).run(query)
+		@query, errors, warnings = QueryCleaner.new.run(params[:query])
 
-		if stocks.empty?
-			flash.now[:danger] = "No stock tickers entered." 
-			return false
+		if current_user.nil?
+			queries = cookies[:queries].to_i || 0
+			queries = queries + 1
+			queries = 10 if queries > 10
+			cookies[:queries] = queries
 		end
 
-		phrase = PhraseExtractor.new(LevenshteinDistance.new).run(query)
+		flash_messages :query_error, errors
+		return false unless errors.empty?
 
-		if phrase.nil?
-			flash.now[:warning] = "Invalid query"
-			return false
+		flash_messages :query_warning, warnings
+
+		@tickers = TickerExtractor.new(/\$([a-zA-Z.]+)/).run(@query)
+		stocks = @tickers.map{|ticker| Stock.find(ticker)}
+
+		@phrase = PhraseExtractor.new(LevenshteinDistance.new).run(@query)
+
+		if @phrase.nil?
+			@intent = Intent.find_by_name("Default")
+			flash_message :query_warning, "We don't recognize that query - feel free to contact us if it should be included."
 		end
 
-		@intent = phrase.intent
+		@phrase.intent unless @phrase.nil?
 		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|
 			{ticker: stock.ticker, data: @intent.get_data(stock.get_binding)}
 		end
-
+		@output ||= []
 		@news = Stock.get_news stocks.map{|stock| stock.ticker}
 	end
 
 	def autocomplete
-		# LIKE is case insensitive in sqlite (testing, develop), but not in postgres (staging, production), so we need ILIKE for those cases
-		like = (Rails.env.production? or Rails.env.staging?) ? "ILIKE" : "LIKE"
 		@suggestions = []
 		length = params[:query].split(' ').count
 
 		0.upto(length - 1).each do |i|
 			if @suggestions.empty?
 				@suggestions += Phrase.select([:phrase])
-															.where("phrase #{like} ?", "%#{params[:query].split(' ')[i..length].join(' ')}%")
+															.where("phrase ILIKE ?", "%#{params[:query].split(' ')[i..length].join(' ')}%")
 															.order("LENGTH(phrase) ASC")
 															.map{|p| {input: params[:query], phrase: params[:query].reverse.sub(params[:query].split(' ')[i..length].join(' ').reverse, p.phrase.reverse).reverse}}
 			end		
@@ -56,4 +66,15 @@ class App::QueriesController < App::BaseController
 		@intents = Intent.select(:name).map{|i| i.name}
 	end
 
+
+	private
+	def log_query
+		log = Log.create(
+			query: @query, 
+			user_id: (current_user.nil? ? nil : current_user.id),
+			tickers: @tickers,
+			phrase_id: @phrase,
+			intent_id: @intent
+			)
+	end
 end
