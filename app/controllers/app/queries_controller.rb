@@ -32,7 +32,7 @@ class App::QueriesController < App::BaseController
 			flash_message :query_warning, "We don't recognize that query - feel free to contact us if it should be included."
 		end
 
-		@phrase.intent unless @phrase.nil?
+		@intent = @phrase.intent unless @phrase.nil?
 		authorize! :execute, @intent
 		
 		@output = stocks.map do |stock|
