@@ -398,7 +398,7 @@ match_phrases_to_intent(['Institutional Holdings', '13F Institutional Holdings',
 
 # Income statements
 intent = Intent.create(name: 'Income Statement', code: 'get_income_statement', executable_by: paid_roles)
-match_phrases_to_intent(['Income Statment'], intent)
+match_phrases_to_intent(['Income Statement'], intent)
 
 
 

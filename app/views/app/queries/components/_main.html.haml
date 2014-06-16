@@ -58,23 +58,9 @@
             .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
               %table.table
                 %thead
-                  %tr
-                    - for header in out[:data][:headers]
-                      %th 
-                        = header
-                %tbody
+                  %tbody
                   - out[:data][:data].each do |row|
-                    %tr
-                      %td
-                        = row["table_rows_1"]
-                      %td
-                        = row["table_rows_2"]
-                      %td
-                        = row["table_rows_3"]
-                      %td
-                        = row["table_rows_4"]
-                      %td
-                        = row["table_rows_5"]
-                      %td  
-                        = row["table_rows_6"]
->>>>>>> d5532a381258522ba0c4dca2517665e93afa0574
+                    %tr 
+                      - row.each do |elem|
+                        %td 
+                          = elem
