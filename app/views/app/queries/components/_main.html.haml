@@ -1,5 +1,5 @@
 #main-query-info
-  - unless @intent.name == "Institutional Holdings" or @intent.name == "Income Statement" or @intent.name = "Default"
+  - unless @intent.name == "Institutional Holdings" or @intent.name == "Income Statement" or @intent.name == "Balance Sheet" or @intent.name == "Cash Flow" or @intent.name = "Default"
     %ul
       - @output.each do |out|
         %li 
@@ -58,7 +58,7 @@
         .tab-content
           - @output.each do |out|
             .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
-              %table.table
+              %table.table{style:"font-size:10px"}
                 %thead
                   %tbody
                   - out[:data][:data].each do |row|
@@ -69,8 +69,9 @@
                             %b 
                               = elem 
                           -else
-                            - if elem == "Operating expenses" or elem == "Earnings per share" or elem == "Weighted average shares outstanding"
+                            - if elem == "Operating expenses" or elem == "Earnings per share" or elem == "Weighted average shares outstanding" or elem == "Cash Flows From Operating Activities" or elem == "Cash Flows From Financing Activities" or elem == "Free Cash Flow" or elem == "Cash Flows From Investing Activities" 
                               %b
                                 = elem 
                             - else
                               = (elem.to_i == 0 or out[:data][:data].first == row) ? elem : number_to_currency(elem.to_f / 1000000) 
+              

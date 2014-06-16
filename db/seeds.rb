@@ -400,6 +400,14 @@ match_phrases_to_intent(['Institutional Holdings', '13F Institutional Holdings',
 intent = Intent.create(name: 'Income Statement', code: 'get_income_statement', executable_by: paid_roles)
 match_phrases_to_intent(['Income Statement'], intent)
 
+# Balance sheet
+intent = Intent.create(name: 'Balance Sheet', code: 'get_balance_sheet', executable_by: paid_roles)
+match_phrases_to_intent(['Balance Sheet'], intent)
+
+# Cash flow
+intent = Intent.create(name: 'Cash Flow', code: 'get_cash_flow', executable_by: paid_roles)
+match_phrases_to_intent(['Cash Flow Statement'], intent)
+
 
 
 
