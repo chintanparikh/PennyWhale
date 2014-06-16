@@ -1,5 +1,5 @@
 #main-query-info
-  - unless @intent.name == "Institutional Holdings"
+  - unless @intent.name == "Institutional Holdings" or @intent.name == "Income Statement"
     %ul
       - @output.each do |out|
         %li 
@@ -14,34 +14,66 @@
           %strong 
             = out[:data]
   - else
-    #13f
-      %ul.nav.nav-tabs
-        - @output.each do |out|
-          %li{class: ("active" if out.equal? @output.first)}
-            %a{href: "##{out[:ticker]}tab", data: {toggle: 'tab'}}
-              = out[:ticker]
-      .tab-content
-        - @output.each do |out|
-          .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
-            %table.table
-              %thead
-                %tr
-                  %th Stock
-                  %th Activity
-                  %th Share change
-                  %th % change to Portfolio
-              %tbody
-                - out[:data].each do |row|
+    - if @intent == "Institutional Holdings"
+      #13f
+        %ul.nav.nav-tabs
+          - @output.each do |out|
+            %li{class: ("active" if out.equal? @output.first)}
+              %a{href: "##{out[:ticker]}tab", data: {toggle: 'tab'}}
+                = out[:ticker]
+        .tab-content
+          - @output.each do |out|
+            .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
+              %table.table
+                %thead
                   %tr
-                    %td
-                      = row["stock"]["text"]
-                    - if row["activity"].include? "Add" or row["activity"].include? "Buy"
-                      %td{style: "color:#177D0A"}
-                        = row["activity"] 
-                    - else 
-                      %td{style: "color:#C40606"}
-                        = row["activity"] 
-                    %td
-                      = row["share_change"] 
-                    %td
-                      = row["percentage"] + '%'
+                    %th Stock
+                    %th Activity
+                    %th Share change
+                    %th % change to Portfolio
+                %tbody
+                  - out[:data].each do |row|
+                    %tr
+                      %td
+                        = row["stock"]["text"]
+                      - if row["activity"].include? "Add" or row["activity"].include? "Buy"
+                        %td{style: "color:#177D0A"}
+                          = row["activity"] 
+                      - else 
+                        %td{style: "color:#C40606"}
+                          = row["activity"] 
+                      %td
+                        = row["share_change"] 
+                      %td
+                        = row["percentage"] + '%'
+    - else
+      #IncomeStatment
+        %ul.nav.nav-tabs
+          - @output.each do |out|
+            %li{class: ("active" if out.equal? @output.first)}
+              %a{href: "##{out[:ticker]}tab", data: {toggle: 'tab'}}
+                = out[:ticker]
+        .tab-content
+          - @output.each do |out|
+            .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
+              %table.table
+                %thead
+                  %tr
+                    - for header in out[:data][:headers]
+                      %th 
+                        = header
+                %tbody
+                  - out[:data][:data].each do |row|
+                    %tr
+                      %td
+                        = row["table_rows_1"]
+                      %td
+                        = row["table_rows_2"]
+                      %td
+                        = row["table_rows_3"]
+                      %td
+                        = row["table_rows_4"]
+                      %td
+                        = row["table_rows_5"]
+                      %td  
+                        = row["table_rows_6"]

@@ -36,6 +36,10 @@ class Stock
 		@ticker
 	end
 
+	def get_income_statement
+		Financials.get_income_statement @ticker
+	end
+
 	def self.get_news tickers
 		ticker_string = tickers.join(",")
 		endpoint = "http://feeds.finance.yahoo.com/rss/2.0/headline?s=" + ticker_string + "&region=US&lang=en-US"
@@ -79,5 +83,7 @@ class Stock
 
 		results
 	end
+
+
 	
 end
