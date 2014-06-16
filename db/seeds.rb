@@ -87,7 +87,7 @@ match_phrases_to_intent(["Day's Value Change", "Days Value Change", 'Value Chang
 
 # Dividend pay date
 intent = Intent.create(name: 'Dividend Pay Date', code:"pull_from_yahoo('r1')", executable_by: all_roles)
-match_phrases_to_intent(['Dividend Pay Date', 'Dividend Date'], intent)
+match_phrases_to_intent(['Dividend Pay Date', 'Dividend Date', 'Dividend'], intent)
 
 # Trailing Annual Dividend Yield + %
 intent = Intent.create(name: 'Trailing Annual Dividend Yield', code: "percent_change_yahoo('d0','y0')", executable_by: all_roles)
