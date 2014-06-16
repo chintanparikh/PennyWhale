@@ -47,6 +47,8 @@
                       %td
                         = row["percentage"] + '%'
     - else
+      %small{style:"float:right"}
+        (numbers in millions)
       #IncomeStatment
         %ul.nav.nav-tabs
           - @output.each do |out|
@@ -63,4 +65,12 @@
                     %tr 
                       - row.each do |elem|
                         %td 
-                          = elem
+                          - if out[:data][:data].first == row
+                            %b 
+                              = elem 
+                          -else
+                            - if elem == "Operating expenses" or elem == "Earnings per share" or elem == "Weighted average shares outstanding"
+                              %b
+                                = elem 
+                            - else
+                              = (elem.to_i == 0 or out[:data][:data].first == row) ? elem : number_to_currency(elem.to_f / 1000000) 
