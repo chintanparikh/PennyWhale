@@ -14,7 +14,7 @@
           %strong 
             = out[:data]
   - else
-    - if @intent == "Institutional Holdings"
+    - if @intent.name == "Institutional Holdings"
       #13f
         %ul.nav.nav-tabs
           - @output.each do |out|
@@ -46,7 +46,7 @@
                         = row["share_change"] 
                       %td
                         = row["percentage"] + '%'
-    - else
+    - elsif ["Income Statement", "Balance Sheet", "Cash Flow Statement"].include? @intent.name
       %small{style:"float:right"}
         (numbers in millions)
       #FinancialStatement
