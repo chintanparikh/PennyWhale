@@ -404,8 +404,8 @@ match_phrases_to_intent(['Income Statement'], intent)
 intent = Intent.create(name: 'Balance Sheet', code: 'get_balance_sheet', executable_by: paid_roles)
 match_phrases_to_intent(['Balance Sheet'], intent)
 
-# Cash flow
-intent = Intent.create(name: 'Cash Flow', code: 'get_cash_flow', executable_by: paid_roles)
+# Cash Flow Statement
+intent = Intent.create(name: 'Cash Flow Statement', code: 'get_cash_flow', executable_by: paid_roles)
 match_phrases_to_intent(['Cash Flow Statement'], intent)
 
 
