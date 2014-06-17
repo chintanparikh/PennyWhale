@@ -1,5 +1,5 @@
 #main-query-info
-  - unless @intent.name == "Institutional Holdings" or @intent.name == "Income Statement" or @intent.name == "Balance Sheet" or @intent.name == "Cash Flow" or @intent.name = "Default"
+  - if !["Institutional Holdings", "Income Statement", "Balance Sheet", "Cash Flow Statement", "Default"].include? @intent.name
     %ul
       - @output.each do |out|
         %li 
@@ -49,7 +49,7 @@
     - else
       %small{style:"float:right"}
         (numbers in millions)
-      #IncomeStatment
+      #FinancialStatement
         %ul.nav.nav-tabs
           - @output.each do |out|
             %li{class: ("active" if out.equal? @output.first)}
@@ -60,18 +60,25 @@
             .tab-pane{id: "#{out[:ticker]}tab", class: ("active" if out.equal? @output.first)}
               %table.table{style:"font-size:10px"}
                 %thead
-                  %tbody
+                %tbody{id:"financial_statement"}
                   - out[:data][:data].each do |row|
-                    %tr 
-                      - row.each do |elem|
-                        %td 
-                          - if out[:data][:data].first == row
-                            %b 
+                    %tr
+                    - unless ["Operating expenses", "Earnings per share", "Weighted average shares outstanding", "Assets", "Current assets", "Cash", "Non-current assets", "Property, plant and equipment", "Liabilities and stockholders' equity", "Liabilities", "Current liabilities", "Cash Flows From Operating Activities", "Cash Flows From Investing Activities", "Cash Flows From Financing Activities", "Free Cash Flow"].include? row[0]
+                      %td 
+                        %input{name: "vehicle", type: "checkbox", value: "Highlight"}
+                    - else
+                      %td
+                    - row.each do |elem|
+                      %td 
+                        - if out[:data][:data].first == row
+                          %b 
+                            = elem
+                        -else
+                          - if elem == "Operating expenses" or elem == "Earnings per share" or elem == "Weighted average shares outstanding" or elem == "Cash Flows From Operating Activities" or elem == "Cash Flows From Financing Activities" or elem == "Free Cash Flow" or elem == "Cash Flows From Investing Activities" 
+                            %b
                               = elem 
-                          -else
-                            - if elem == "Operating expenses" or elem == "Earnings per share" or elem == "Weighted average shares outstanding" or elem == "Cash Flows From Operating Activities" or elem == "Cash Flows From Financing Activities" or elem == "Free Cash Flow" or elem == "Cash Flows From Investing Activities" 
-                              %b
-                                = elem 
-                            - else
-                              = (elem.to_i == 0 or out[:data][:data].first == row) ? elem : number_to_currency(elem.to_f / 1000000) 
+                          - else
+                            = (elem.to_i == 0 or out[:data][:data].first == row) ? elem : number_to_currency(elem.to_f / 1000000) 
+               
+                    
               
