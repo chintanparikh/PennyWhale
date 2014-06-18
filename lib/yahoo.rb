@@ -23,6 +23,7 @@ module Yahoo
       response = RestClient.get(endpoint)
     rescue 
       #try again 
+      sleep(5)
       response = RestClient.get(endpoint)
     end
 
